@@ -1,0 +1,113 @@
+= Anchors - guiding which element should be selected
+
+
+== Introduction to anchors
+Sometimes webpage contains multiple, duplicated UI texts. While Qentinel Pace tries it's best to click only elements that are actually clickable, you may face situations where there are duplicated elements and clicks go to the "wrong" one. This is where concept of *anchors* steps in.
+
+In nutshell, anchors are little hints to underlying test execution framework on which of the duplicate elements to select. They work with basically all interaction Pacewords which uses UI text as a locator (for example ClickText, TypeText etc.)
+
+
+== Anchor types
+
+Anchors can be either text or numbers.
+
+*Textual anchors* bind text to be found to another text close by. So using for example the following script:
+
+[source, robotframework]
+----
+ClickText    Login      anchor=Cancel
+----
+
+...Qentinel Pace tries to find and click text *Login* which is closest to text *Cancel*. 
+
+*Numeric anchors* are positional; Qentinel Pace finds nth instance of the element on screen. For example, using the following script:
+
+[source, robotframework]
+----
+ClickText    Login      anchor=3
+----
+
+...Qentinel Pace would click third instance of element containing text *Login*.
+
+== Anchor example
+We will use https://www.salesforce.com/uk/[Salesforce's UK pages] as an example on how to use anchors. At the time of writing, there were these areas roughly on the middle of the page:
+[.left]
+image::salesforce_uk_demos.png[Qentinel.com top navigation bar]
+{empty} +
+{empty} +
+{empty} +
+{empty} +
+{empty} +
+{empty} +
+{empty} +
+{empty} +
+
+If we would want to watch specific demo, say for "Service", we would need to use anchors.
+
+Here is a little example script that would open all first 4 demos one-by-one:
+
+
+[source, robotframework]
+----
+*** Settings ***
+Library                     QWeb
+
+*** Test Cases ***
+Opening context menu by xpath
+    OpenBrowser             https://www.salesforce.com/uk/   chrome
+    ClickText               WATCH DEMO  # by default Qentinel Pace clicks the first one
+    ClickText               WATCH DEMO  anchor=Sales    # opens second one, Sales, using textual anchor
+    ClickText               WATCH DEMO  anchor=2        # opens second one, Sales, using numeric anchor
+    ClickText               WATCH DEMO  anchor=Service  # opens third one, Service, using textual anchor
+    ClickText               WATCH DEMO  anchor=Marketing  # opens fourth one, Marketing, using textual anchor
+----
+
+TIP: Using textual anchors is preferred at least in lists and tables where item position can frequently change.
+
+'''
+
+== Other means of selecting specific element
+
+In addition to "anchors", many Pacewords allow specifying the HTML tag for the element we should be interacting with, it's parent tag or it's child tag. This is especially useful if there are multiple items with same text or other attribute, but with different tags. Or, if the text attribute is actually either a child or parent of the element which reacts to clicks.
+
+The above can be done with *tag*, *parent* or *child* arguments. Please check each Paceword's documentation to find out which of these it supports. As an example, we will use *ClickItem* that supports *tag* argument and *ClickText* which supports *parent* and *child* arguments. 
+
+To demonstrate how parent & child arguments work, we will use Salesforce, this time as logged in person. We'll use the table in "Leads" section of Salesforce:
+
+
+[.left]
+image::salesforce_leads_table.png[Salesforce Leads Table]
+{empty} +
+{empty} +
+{empty} +
+{empty} +
+{empty} +
+{empty} +
+{empty} +
+{empty} +
+
+Notice, that Email cell of the table contains both a link (the email address) and an Edit icon.
+The HTML source for that cell is as follows:
+
+[source, html]
+----
+<td role="gridcell" class="slds-cell-edit cellContainer" tabindex="-1" data-aura-class="forceInlineEditCell" data-aura-rendered-by="1510:0"><span class="slds-grid slds-grid--align-spread forceInlineEditCell" data-aura-rendered-by="1518:0" data-aura-class="forceInlineEditCell"><a class="slds-truncate emailuiFormattedEmail" href="mailto:tina.smith@gmail.com" data-aura-rendered-by="1514:0" data-aura-class="emailuiFormattedEmail">tina.smith@gmail.com</a><span class="triggerContainer" data-aura-rendered-by="1520:0"><button class="slds-button trigger slds-button_icon-border" type="button" data-aura-rendered-by="1523:0"><span data-aura-rendered-by="1526:0"><svg class="slds-button__icon" focusable="false" aria-hidden="true" data-key="edit">
+<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg?cache=9.36.1#edit"></use>
+</svg></span><span class="slds-assistive-text" data-aura-rendered-by="1578:0">Edit Email: Item 1</span></button></span></span></td>
+----
+There's <a> tag for the email address and <button> tag for the *Edit* icon.
+
+If you just click the table cell, Qentinel Pace will do exactly as instructed and click the default clickable action in that cell. In this particular situation it would try to send email to the person.
+
+However, if you intent to click the embedded icon in a cell, you can do this with the *tag* attribute. 
+
+[source, robotframework]
+----
+# Note, this example contains table related keywords which will be gone through later in this course
+UseTable        Name
+ClickCell       r2c6   tag=button
+----
+
+
+'''
+link:../README.md[Back to TOC]  |  link:../08/alerts.adoc[Next]

@@ -1,0 +1,31 @@
+= Handling alerts
+
+
+Alerts can be a pain in web pages, especially if they are unexpected. Usually nothing else can be done until an alert window is closed. To overcome this, Qentinel Pace comes with a setting to handle alerts "automatically". So whenever an alert appears, Qentinel Pace automatically dismisses it (using the Accept method in CloseAlert Paceword). This setting is by default on, but if you want to turn it off, you can use *SetConfig*
+
+[source, robotframework]
+----
+SetConfig    HandleAlerts       False   # alerts need to be handled with alert related Pacewords from now on
+----
+
+However, if you are expecting an alert as a part of your test case, you have the following Pacewords to interact with Alerts:
+
+* https://help.pace.qentinel.com/pacewords-reference/current/pacewords/verification/isalert_qweb.html[IsAlert]
+* https://help.pace.qentinel.com/pacewords-reference/current/pacewords/textual/getalerttext_qweb.html[GetAlertText]
+* https://help.pace.qentinel.com/pacewords-reference/current/pacewords/verification/verifyalerttext_qweb.html[VerifyAlertText]
+* https://help.pace.qentinel.com/pacewords-reference/current/pacewords/advanced/typealert_qweb.html[TypeAlert]
+* https://help.pace.qentinel.com/pacewords-reference/current/pacewords/interaction/closealert_qweb.html[CloseAlert]
+
+
+*IsAlert* returns True or False depending if alert is displayed or not.
+
+*GetAlertText* gets alert text into a variable
+
+*VerifyAlertText* verifies that the alert text is as expected
+
+*TypeAlert* types text into alert that contains an input element
+
+*CloseAlert* closes alert using method specified as an argument. Valid methods to close an alert are *ACCEPT* and *DISMISS*. Accept is similar to user clicking OK/Accept or any localized button that does the same. Dismiss is similar to user clicking Cancel.
+
+'''
+link:../README.md[Back to TOC]  |  link:../09/index.adoc[Next]
