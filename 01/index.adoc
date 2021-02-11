@@ -1,0 +1,17 @@
+# Interacting with Browser
+
+## Keywords
+### OpenBrowser
+Browser needs to be opened with ```OpenBrowser``` keyword for QWeb/Selenium to be able to control it.
+
+
+TIP: This is just a tip
+
+
+
+## Exercise - Browser
+
+'''
+link:../README.md[Back to TOC]  |  link:../02/index.adoc[Next]
+
+
