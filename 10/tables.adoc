@@ -20,14 +20,9 @@ You can check all table related Pacewords https://help.pace.qentinel.com/pacewor
 === UseTable
 Before we start working with table contents we must "focus" on certain table. This will limit the search to certain table and is especially useful in these web applications that have multiple tables on a same page. To focus on certain table, you should use Paceword *UseTable* and give some text from the table as argument. Usually one of the headers is a good choice OR if table contents is known, some value from a table row/cell.
 
-As an example, with Salesforce Leads table
+With an example table like this:
 [.left]
-image::salesforce_leads_table.png[Salesforce Leads Table]
-{empty} +
-{empty} +
-{empty} +
-{empty} +
-{empty} +
+image::../images/example_table.png[Example Table]
 {empty} +
 {empty} +
 {empty} +
@@ -36,9 +31,9 @@ image::salesforce_leads_table.png[Salesforce Leads Table]
 
 [source, robotframework]
 ----
-UseTable        Name
+UseTable        Firstname
 # OR using a table cell value:
-UseTable        Open
+UseTable        Jane
 ----
 
 After focusing to a table, all table related Pacewords will work with that particular table until changed to another table.
@@ -48,17 +43,7 @@ TIP: Focusing to a table is easiest with some text on a table, but xpath's work 
 NOTE: A "table" does not necessarily look like a table in a web page. You can use Qentinel Pace's table related keywords always when there's <td> tags as a parent for the element you want to interact with.
 
 === Example table
-link:{attachmentsdir}/table.html[Here] is a .html page that contains example table. Use this as playground for exercises below. The example table has following content:
-[.left]
-image::example_table.png[Example Table]
-{empty} +
-{empty} +
-{empty} +
-{empty} +
-{empty} +
-{empty} +
-{empty} +
-{empty} +
+link:../examples/table.html[Here] is a .html page that contains this example table. Use this as playground for exercises below. 
 
 === GetTableRow
 

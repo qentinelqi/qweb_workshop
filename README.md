@@ -20,7 +20,7 @@ Workshop covers the following topics:
 11. Debugging
 12. Settings / Configuration
 
-Each chapter has in own material, exercises and exercise solutions on repo.
+Each chapter has it's own material, exercises and exercise solutions on repo.
 
 
 
