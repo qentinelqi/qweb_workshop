@@ -8,13 +8,13 @@ In this workshop, we cover the main features of [QWeb](https://github.com/qentin
 Workshop covers the following topics:
 
 1. [Controlling browser](./01/index.adoc)
-2. Interacting with elements via text selectors
+2. [Interacting with elements](./02/index.adoc) via text selectors
 3. Other selectors
 4. Dropdowns
 5. Typing texts / input
 6. Assertions
 7. Timeouts & Anchors
-8. Hanling Alerts
+8. Handling Alerts
 9. Blocks
 10. Table keywords
 11. Debugging

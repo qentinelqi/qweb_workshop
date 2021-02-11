@@ -1,0 +1,21 @@
+# Interacting with elements
+
+## Using text selectors
+
+
+## Keywords
+### ClickText
+TODO
+
+
+
+
+
+## Exercise - Browser
+
+TODO
+
+'''
+link:../README.md[Back to TOC]  |  link:../03/index.adoc[Next]
+
+
