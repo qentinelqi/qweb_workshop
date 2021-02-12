@@ -13,7 +13,8 @@ Workshop covers the following topics:
 4. Dropdowns
 5. Typing texts / input
 6. Assertions
-7. [Timeouts & Anchors](./07/anchors.adoc)
+6. [Timeouts](./06/timeouts.adoc)
+7. [Anchors](./07/anchors.adoc)
 8. [Handling Alerts](./08/alerts.adoc)
 9. Blocks, ClickUntil & ClickWhile
 10. [Table keywords](./10/tables.adoc)

@@ -1,14 +1,14 @@
 = Handling alerts
 
 
-Alerts can be a pain in web pages, especially if they are unexpected. Usually nothing else can be done until an alert window is closed. To overcome this, Qentinel Pace comes with a setting to handle alerts "automatically". So whenever an alert appears, Qentinel Pace automatically dismisses it (using the Accept method in CloseAlert Paceword). This setting is by default on, but if you want to turn it off, you can use *SetConfig*
+Alerts can be a pain in web pages, especially if they are unexpected. Usually nothing else can be done until an alert window is closed. To overcome this, QWeb comes with a setting to handle alerts "automatically". So whenever an alert appears, QWeb automatically dismisses it (using the Accept method in CloseAlert keyword). This setting is by default on, but if you want to turn it off, you can use *SetConfig*
 
 [source, robotframework]
 ----
-SetConfig    HandleAlerts       False   # alerts need to be handled with alert related Pacewords from now on
+SetConfig    HandleAlerts       False   # alerts need to be handled with alert related keywords from now on
 ----
 
-However, if you are expecting an alert as a part of your test case, you have the following Pacewords to interact with Alerts:
+However, if you are expecting an alert as a part of your test case, you have the following keywords to interact with Alerts:
 
 * https://help.pace.qentinel.com/pacewords-reference/current/pacewords/verification/isalert_qweb.html[IsAlert]
 * https://help.pace.qentinel.com/pacewords-reference/current/pacewords/textual/getalerttext_qweb.html[GetAlertText]

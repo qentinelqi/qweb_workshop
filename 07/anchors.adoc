@@ -2,9 +2,9 @@
 
 
 == Introduction to anchors
-Sometimes webpage contains multiple, duplicated UI texts. While Qentinel Pace tries it's best to click only elements that are actually clickable, you may face situations where there are duplicated elements and clicks go to the "wrong" one. This is where concept of *anchors* steps in.
+Sometimes webpage contains multiple, duplicated UI texts. While QWeb tries it's best to click only elements that are actually clickable, you may face situations where there are duplicated elements and clicks go to the "wrong" one. This is where concept of *anchors* steps in.
 
-In nutshell, anchors are little hints to underlying test execution framework on which of the duplicate elements to select. They work with basically all interaction Pacewords which uses UI text as a locator (for example ClickText, TypeText etc.)
+In nutshell, anchors are little hints to underlying test execution framework on which of the duplicate elements to select. They work with basically all interaction keywords which uses UI text as a locator (for example ClickText, TypeText etc.)
 
 
 == Anchor types
@@ -18,21 +18,21 @@ Anchors can be either text or numbers.
 ClickText    Login      anchor=Cancel
 ----
 
-...Qentinel Pace tries to find and click text *Login* which is closest to text *Cancel*. 
+...QWeb tries to find and click text *Login* which is closest to text *Cancel*. 
 
-*Numeric anchors* are positional; Qentinel Pace finds nth instance of the element on screen. For example, using the following script:
+*Numeric anchors* are positional; QWeb finds nth instance of the element on screen. For example, using the following script:
 
 [source, robotframework]
 ----
 ClickText    Login      anchor=3
 ----
 
-...Qentinel Pace would click third instance of element containing text *Login*.
+...QWeb would click third instance of element containing text *Login*.
 
 == Anchor example
 We will use https://www.salesforce.com/uk/[Salesforce's UK pages] as an example on how to use anchors. At the time of writing, there were these areas roughly on the middle of the page:
 [.left]
-image::salesforce_uk_demos.png[Qentinel.com top navigation bar]
+image::salesforce_uk_demos.png[Salesforce demo]
 {empty} +
 {empty} +
 {empty} +
@@ -55,7 +55,7 @@ Library                     QWeb
 *** Test Cases ***
 Opening context menu by xpath
     OpenBrowser             https://www.salesforce.com/uk/   chrome
-    ClickText               WATCH DEMO  # by default Qentinel Pace clicks the first one
+    ClickText               WATCH DEMO  # by default Qentinel QWeb clicks the first one
     ClickText               WATCH DEMO  anchor=Sales    # opens second one, Sales, using textual anchor
     ClickText               WATCH DEMO  anchor=2        # opens second one, Sales, using numeric anchor
     ClickText               WATCH DEMO  anchor=Service  # opens third one, Service, using textual anchor
@@ -68,9 +68,9 @@ TIP: Using textual anchors is preferred at least in lists and tables where item 
 
 == Other means of selecting specific element
 
-In addition to "anchors", many Pacewords allow specifying the HTML tag for the element we should be interacting with, it's parent tag or it's child tag. This is especially useful if there are multiple items with same text or other attribute, but with different tags. Or, if the text attribute is actually either a child or parent of the element which reacts to clicks.
+In addition to "anchors", many key allow specifying the HTML tag for the element we should be interacting with, it's parent tag or it's child tag. This is especially useful if there are multiple items with same text or other attribute, but with different tags. Or, if the text attribute is actually either a child or parent of the element which reacts to clicks.
 
-The above can be done with *tag*, *parent* or *child* arguments. Please check each Paceword's documentation to find out which of these it supports. As an example, we will use *ClickItem* that supports *tag* argument and *ClickText* which supports *parent* and *child* arguments. 
+The above can be done with *tag*, *parent* or *child* arguments. Please check each keyword's documentation to find out which of these it supports. As an example, we will use *ClickItem* that supports *tag* argument and *ClickText* which supports *parent* and *child* arguments. 
 
 To demonstrate how parent & child arguments work, we will use Salesforce, this time as logged in person. We'll use the table in "Leads" section of Salesforce:
 
@@ -97,7 +97,7 @@ The HTML source for that cell is as follows:
 ----
 There's <a> tag for the email address and <button> tag for the *Edit* icon.
 
-If you just click the table cell, Qentinel Pace will do exactly as instructed and click the default clickable action in that cell. In this particular situation it would try to send email to the person.
+If you just click the table cell, QWeb will do exactly as instructed and click the default clickable action in that cell. In this particular situation it would try to send email to the person.
 
 However, if you intent to click the embedded icon in a cell, you can do this with the *tag* attribute. 
 
