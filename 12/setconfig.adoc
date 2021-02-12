@@ -1,0 +1,163 @@
+= Settings / Configuration
+
+*SetConfig* keyword can be used to change the runtime behavior of QWeb. Changes done with *SetConfig* will apply _globally_, meaning once setting is changed it's in use for all test cases / keywords until changed again.
+
+The basic syntax of using *SetConfig* is the following:
+
+[source, robotframework]
+----
+SetConfig    [NAME_OF_THE_SETTING]    [NEW_VALUE_FOR_THE_SETTING]
+----
+
+SetConfig always returns the previously used value, so you can temporarily change a setting and change it back easily.
+
+[source, robotframework]
+----
+${previous}=   SetConfig    LineBreak    ue007
+... # do some actions
+SetConfig    LineBreak    ${previous}   # sets Linebreak character back to previous value (ue004)
+----
+
+TIP: You can see what kind of settings are on by logging the output of keyword *GetConfig*.
+
+Next few topics cover few most common settings that need to be changed from time-to-time.
+{empty} +
+{empty} +
+
+== Settings to aid debugging
+
+=== Visualize what QWeb finds
+Sometimes, especially when there are many duplicated texts / elements on a screen, it's useful to highlight the element Qentinel Pace finds. This can be done by setting *SearchMode*. SearchMode has to possible options:
+
+* Debug
+* Draw
+
+Both of these options highlight found element with *blue* borders. If *debug* is used, Qentinel Pace won't execute additional actions (e.g. clicks) to the element.
+
+[source, robotframework]
+----
+SetConfig    SearchMode      debug  #Highlights element, but won't put action on it
+SetConfig    SearchMode      draw   #Highlights element and then executes kw
+----
+
+EXAMPLE: To illustrate how this looks like in practice, let's consider the following Paceword:
+[source, robotframework]
+----
+VerifyText    Login
+----
+
+Without setting *SearchMode* Paceword passes without any indication where the text was found:
+
+[.left]
+image::../images/verify_searchmode_off.png[SearchMode off]
+(no indication which "Qentinel Pace" text was actually found)
+
+{empty} +
+{empty} +
+{empty} +
+
+*With SearchMode set to Draw* Qentinel Pace highlights the element:
+
+[.left]
+image::../images/verify_searchmode_on.png[SearchMode on]
+
+{empty} +
+{empty} +
+{empty} +
+
+=== Control screenshots
+
+By default QWeb takes a screenshot on all failed keywords. In some cases, for example in RPA when there's sensitive data on screen, you may want to turn screenshot logging off. You can do this with *SetConfig    LogScreenshot*:
+
+Enables or disables logging screenshots when keyword fails. Default is take screenshots (True). False disables screenshots from logs when keyword fails.
+
+[source, robotframework]
+----
+SetConfig    LogScreenshot         False
+SetConfig    LogScreenshot         True
+----
+
+=== Turning debug on automatically
+
+TODO
+// TODO
+
+== Settings related to typing
+
+When you type text into input field with Qentinel Pace, the following normally happens:
+
+. Qentinel Pace finds the element / input field where to type
+. Qentinel Pace clears all existing text from the input field
+. Qentinel Pace tries to type given text to input field
+. Qentinel Pace moves to next input field using the kbd:[TAB] key
+
+This works fine in most cases, but sometimes you need Qentinel Pace to behave differently. 
+
+=== ClearKey
+
+If you prefer that Qentinel Pace *does not* remove existing text in the input field, you can set configuration parameter *ClearKey* to *{NULL}*. This way additional text is appended to already existing text in the field.
+
+You can set the clear key temporarily in keyword arguments:
+
+[source, robotframework]
+----
+TypeText    Username   def   clear_key={NULL}
+----
+
+...or you can set this setting globally with *SetConfig*:
+
+[source, robotframework]
+----
+SetConfig    ClearKey    {NULL}
+----
+
+After changing this setting with SetConfig *all* TypeText keywords would not clear the input field before typing.
+
+
+=== CheckInputValue
+
+By default Qentinel Pace sends given text to an input field and moves on to the next input field. However, in some implementations inputting text launches some kind of an event (for example data validation) and this could prevent input reaching the next field (in case you type text to multiple fields one after each other).
+
+To overcome this, you can instruct Qentinel Pace to validate that the text you tried to input is actually fully stored in the input field. To turn this on globally you need to set configuration parameter *CheckInputValue* to *True*:
+
+[source, robotframework]
+----
+SetConfig    CheckInputValue    True
+----
+
+You can also use this temporarily with certain problematic fields by giving it as keyword argument:
+
+[source, robotframework]
+----
+TypeText     Username     robot_user   check=True
+----
+
+=== LineBreak
+
+By default, after inputing given text Qentinel Pace sends the *LineBreak* key kbd:[TAB] (or (ue004 to be exact) to the input field. In some cases you might want to send some other key, for example kbd:[ENTER] or nothing at all. You can change this behavior by setting the *LineBreak* key.
+
+To change this setting globally, use *SetConfig*:
+
+[source, robotframework]
+----
+${previous}=    SetConfig   LineBreak    \ue007    # Enter key
+${previous}=    SetConfig   LineBreak    ${EMPTY}   # Do not send anything
+
+SetConfig   LineBreak    \ue004    # Tab key
+----
+
+TIP: You can also instruct Qentinel Pace to type kbd:[TAB] or kbd:[ENTER] like this:
+
+[source, robotframework]
+----
+TypeText   Address     1st Avenue\n    # Newline is "typed"
+TypeText   Address     1st Avenue\t    # Tab is sent as the last character
+----
+
+TIP: You can see all possible *LineBreak* characters https://help.pace.qentinel.com/pacewords-reference/current/pacewords/configuration/setconfig_qweb.html[here]
+
+TIP: You can learn more about more about other settings you can change with *SetConfig* https://help.pace.qentinel.com/pacewords-reference/current/pacewords/configuration/setconfig_qweb.html[here]
+
+
+'''
+link:../README.md[Back to TOC]  |  link:../13/extending_qweb.adoc[Next]

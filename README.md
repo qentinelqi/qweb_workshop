@@ -19,6 +19,7 @@ Workshop covers the following topics:
 10. [Table keywords](./10/tables.adoc)
 11. Debugging
 12. Settings / Configuration
+13. [Extending QWeb](./13/extending_qweb.adoc)
 
 Each chapter has it's own material, exercises and exercise solutions on repo.
 

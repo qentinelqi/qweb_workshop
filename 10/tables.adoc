@@ -141,7 +141,9 @@ ClickCell     r2c2
 
 Note that if the cell does not include any clickable action/element, then the cell itself is clicked. This may not be obvious if nothing happens, but I'm highlighting this as it's not supposed to fail in this case.
 
-There is one exception where things might get a bit more complicated; in certain implementations there may be multiple clickable elements embedded inside one cell. This is the same situation we already had once in <<<anchors.adoc>> lesson. We have tried to simulate this situation in our example table on column 4. It contains users email address as a clickable link and fake button "Copy email".
+There is one exception where things might get a bit more complicated; in certain implementations there may be multiple clickable elements embedded inside one cell. 
+
+We have tried to simulate this situation in our example table on column 4. It contains users email address as a clickable link and fake button "Copy email".
 
 If you would just click this cell in normal way, for example
 [source, robotframework]
