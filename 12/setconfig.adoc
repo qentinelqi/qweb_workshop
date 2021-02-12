@@ -1,4 +1,19 @@
 = Settings / Configuration
+// We must enable experimental attribute.
+:experimental:
+:icons: font
+
+// GitHub doesn't render asciidoc exactly as intended, so we adjust settings and utilize some html
+
+ifdef::env-github[]
+
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
 
 *SetConfig* keyword can be used to change the runtime behavior of QWeb. Changes done with *SetConfig* will apply _globally_, meaning once setting is changed it's in use for all test cases / keywords until changed again.
 
