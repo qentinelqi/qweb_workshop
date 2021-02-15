@@ -1,3 +1,18 @@
+// We must enable experimental attribute.
+:experimental:
+:icons: font
+
+// GitHub doesn't render asciidoc exactly as intended, so we adjust settings and utilize some html
+
+ifdef::env-github[]
+
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
 = Changing timeouts
 
 Almost all QWeb keywords have an inbuilt *timeout*, i.e they keep re-trying to find elements and do their action until action succeeds OR until timeout limit is reached. By default this timeout limit is *10 seconds*.

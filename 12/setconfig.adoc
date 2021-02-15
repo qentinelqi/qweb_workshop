@@ -1,4 +1,3 @@
-= Settings / Configuration
 // We must enable experimental attribute.
 :experimental:
 :icons: font
@@ -13,6 +12,8 @@ ifdef::env-github[]
 :caution-caption: :fire:
 :warning-caption: :warning:
 endif::[]
+
+= Settings / Configuration
 
 
 *SetConfig* keyword can be used to change the runtime behavior of QWeb. Changes done with *SetConfig* will apply _globally_, meaning once setting is changed it's in use for all test cases / keywords until changed again.

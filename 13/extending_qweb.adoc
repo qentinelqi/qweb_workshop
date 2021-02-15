@@ -1,3 +1,18 @@
+// We must enable experimental attribute.
+:experimental:
+:icons: font
+
+// GitHub doesn't render asciidoc exactly as intended, so we adjust settings and utilize some html
+
+ifdef::env-github[]
+
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
 = Extending QWeb
 
 While QWeb should work directly with most web elements, there may be sometimes custom functionality which makes things harder than they should be. Common examples is very deeply structured tables or dropdown lists, which are not using *<select>* and *<option>* tags that QWeb's *DropDown* keywords expects.
