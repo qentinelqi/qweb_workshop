@@ -15,7 +15,15 @@ endif::[]
 
 # Interacting with elements
 
-## Using text selectors
+## About selectors
+
+Most QWeb keywords (TypeText, Dropdown etc.) support *textual* , *xpaths* and unique *attribute values* as selectors. We do suggest using visible UI texts when possible as this leads to less and especially much easier maintenance effort.
+
+Clicking elements can be done with specific keywords:
+
+* *ClickText* for UI texts
+* *ClickItem* when using any attribute value (e.g. alt text)
+* *ClickElement* when using xpaths
 
 
 ## Keywords

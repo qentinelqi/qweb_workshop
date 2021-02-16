@@ -1,0 +1,29 @@
+// We must enable experimental attribute.
+:experimental:
+:icons: font
+
+// GitHub doesn't render asciidoc exactly as intended, so we adjust settings and utilize some html
+
+ifdef::env-github[]
+
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+# Debugging
+
+You can turn on debugging using keyword *DebugOn* and turn it of by using keyword *DebugOff*.
+
+DEMO.
+
+
+
+NOTE: On next chapter you will learn a setting that turns debugging on on every failed keyword.
+
+'''
+link:../README.md[Back to TOC]  |  link:../12/index.adoc[Next]
+
+

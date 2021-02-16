@@ -1,0 +1,131 @@
+// We must enable experimental attribute.
+:experimental:
+:icons: font
+
+// GitHub doesn't render asciidoc exactly as intended, so we adjust settings and utilize some html
+
+ifdef::env-github[]
+
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+# Assertions
+
+You can assert that an element exists/is visible using keywords starting with *Verify*. In addition, you can just check if element exists and return the result as boolean using keywords starting with *Is*.
+
+## Keywords
+
+
+### VerifyText / VerifyNoText
+
+```
+VerifyText  	  	text   	timeout
+```
+Verifies that text appears on screen on given time
+
+```
+VerifyNoText  	  	text   	timeout
+```
+
+Verifies that text disappears from screen on given time
+
+Arguments: 
+
+*text = Text to be verified
+* timeout = time to wait/retry until we fail the test case (default value 10 seconds). Optional.
+
+[source, robotframework]
+----
+*** Settings ***
+Library                     QWeb
+
+*** Test Cases ***
+VerifyText examples
+    ...
+    VerifyText      Save
+    VerifyText      Save	30	# Tries to verify that text “Save” appears in 30 seconds. If not, test case will fail.
+    VerifyNoText    Save	15	# Asserts that text “Save” disappears in 15 seconds
+----
+
+### VerifyItem / VerifyNoItem
+```
+VerifyItem     attribute_value   	timeout
+```
+Verifies that an element without visible text appears on screen on given time
+
+```
+VerifyNoText  	  	attribute_value   	timeout
+```
+
+Verifies that an element without visible text disappears from screen on given time
+
+
+Arguments:
+
+* attribute_value = Unique attribute value to identify the element
+* anchor = text close to element or index number 
+* timeout = how long to re-try until keyword fails (default=10s)
+
+Verify Item (usually icon or picture) exist or disappears.
+
+
+[source, robotframework]
+----
+*** Settings ***
+Library                     QWeb
+
+*** Test Cases ***
+VerifyItem examples
+    ...
+    VerifyItem      Remove item         # element with title="Remove item" should exist
+    VerifyNoItem    Remove item	    30	# Tries to verify that element "Remove item" disappears in 30 seconds. If not, test case will fail.
+
+----
+
+### VerifyElement/VerifyNoElement
+`VerifyElement 	xpath	 timeout`
+
+Verify that element specified by xpath is on the screen or disappears from the screen.
+
+Arguments:
+
+* xpath = xpath to identify the element
+* timeout = time to wait/retry until we fail the test case (default value 10 seconds)
+
+
+[source, robotframework]
+----
+*** Settings ***
+Library                     QWeb
+
+*** Test Cases ***
+VerifyElement examples
+    OpenBrowser        https://qentinelqi.github.io/shop    chrome
+    VerifyElement       //ul[@class\="product-list"]
+    ClickText   Our Story
+    VerifyNoElement     xpath\=//ul[@class\="product-list"]
+
+----
+
+### Verifying status of element
+These keywords can verify status of element (i.e if it can be interacted with or not)
+
+* VerifyInputStatus
+* VerifyCheckBoxStatus
+
+
+
+
+
+## Exercise
+
+TODO
+
+'''
+link:../README.md[Back to TOC]  |  link:../04/index.adoc[Next]
+
+
