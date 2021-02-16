@@ -7,8 +7,8 @@ In this workshop, we cover the main features of [QWeb](https://github.com/qentin
 
 Workshop covers the following topics:
 
-1. [Controlling browser](./01/index.adoc)
-2. [Basic interactions](./02/index.adoc)
+1. [Controlling browser](./01/browser.adoc)
+2. [Basic interactions](./02/basic_interaction.adoc)
 3. Assertions
 4. Getting data
 5. [Advanced clicking](./05/clicking_advanced.adoc)
