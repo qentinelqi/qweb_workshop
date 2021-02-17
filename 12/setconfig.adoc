@@ -1,6 +1,8 @@
 // We must enable experimental attribute.
 :experimental:
 :icons: font
+:toc:
+:numbered:
 
 // GitHub doesn't render asciidoc exactly as intended, so we adjust settings and utilize some html
 
@@ -13,8 +15,8 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
+[[top]]
 = Settings / Configuration
-
 
 *SetConfig* keyword can be used to change the runtime behavior of QWeb. Changes done with *SetConfig* will apply _globally_, meaning once setting is changed it's in use for all test cases / keywords until changed again.
 
@@ -39,6 +41,8 @@ TIP: You can see what kind of settings are on by logging the output of keyword *
 Next few topics cover few most common settings that need to be changed from time-to-time.
 {empty} +
 {empty} +
+
+<<top, Table of contents>>
 
 == Settings to aid debugging
 
@@ -81,6 +85,8 @@ image::../images/verify_searchmode_on.png[SearchMode on]
 {empty} +
 {empty} +
 
+<<top, Table of contents>>
+
 === Control screenshots
 
 By default QWeb takes a screenshot on all failed keywords. In some cases, for example in RPA when there's sensitive data on screen, you may want to turn screenshot logging off. You can do this with *SetConfig    LogScreenshot*:
@@ -93,10 +99,33 @@ SetConfig    LogScreenshot         False
 SetConfig    LogScreenshot         True
 ----
 
+[[debug]]
 === Turning debug on automatically
 
-TODO
-// TODO
+You can enable QWeb to automatically open debugging mode on every fail by:
+
+* setting configuration *Debug_Run* to True
+
+[source, robotframework]
+----
+SetConfig    Debug_Run         True
+----
+
+or 
+
+* just setting suite variable '${devmode}', either in your script or command line:
+
+[source, robotframework]
+----
+SetSuiteVariable       ${devmode}    True
+----
+
+[source, shell]
+----
+robot -v devmode:True
+----
+
+<<top, Table of contents>>
 
 == Settings related to typing
 
@@ -108,6 +137,8 @@ When you type text into input field with Qentinel Pace, the following normally h
 . Qentinel Pace moves to next input field using the kbd:[TAB] key
 
 This works fine in most cases, but sometimes you need Qentinel Pace to behave differently. 
+
+<<top, Table of contents>>
 
 === ClearKey
 
@@ -129,6 +160,7 @@ SetConfig    ClearKey    {NULL}
 
 After changing this setting with SetConfig *all* TypeText keywords would not clear the input field before typing.
 
+<<top, Table of contents>>
 
 === CheckInputValue
 
@@ -147,6 +179,8 @@ You can also use this temporarily with certain problematic fields by giving it a
 ----
 TypeText     Username     robot_user   check=True
 ----
+
+<<top, Table of contents>>
 
 === LineBreak
 
@@ -176,4 +210,4 @@ TIP: You can learn more about more about other settings you can change with *Set
 
 
 '''
-link:../README.md[Back to TOC]  |  link:../13/extending_qweb.adoc[Next]
+link:../README.md[Tutorial index]  |  link:../13/extending_qweb.adoc[Next]

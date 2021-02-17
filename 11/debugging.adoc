@@ -1,6 +1,8 @@
 // We must enable experimental attribute.
 :experimental:
 :icons: font
+:toc:
+:numbered:
 
 // GitHub doesn't render asciidoc exactly as intended, so we adjust settings and utilize some html
 
@@ -15,15 +17,39 @@ endif::[]
 
 # Debugging
 
-You can turn on debugging using keyword *DebugOn* and turn it of by using keyword *DebugOff*.
+You can turn on debugging temporarily using keyword *DebugOn* and turn it off temporarily by using keyword *DebugOff*.
 
-DEMO.
+[source, robot framework]
+.Debugging demo
+----
+*** Settings ***
+Library         QWeb
 
+*** Test Cases ***
+Use case 1
+    OpenBrowser     https://qentinelqi.github.io/shop       chrome
+    VerifyText      The animal friendly clothing company
+    ClickText       Scar the Lion
+    ClickText       Add to cart
+    VerifyText      Cart summary
+    DropDown        Size                                    Large
+    ClickItem       Increment quantity
+    DebugOn
+    ClickItem       Remove item
+    VerifyText      Your cart is empty
+    ClickText       Continue shopping
+----
 
+Run this example from repo root by:
+```
+robot ./11/demo_debug_11.robot 
+```
 
-NOTE: On next chapter you will learn a setting that turns debugging on on every failed keyword.
+TIP: To exit debug mode, write `exit` to debug terminal.
+
+NOTE: On link:../12/setconfig.adoc#debug[next chapter] you will learn a setting that turns debugging on on every failed keyword.
 
 '''
-link:../README.md[Back to TOC]  |  link:../12/index.adoc[Next]
+link:../README.md[Tutorial index]  |  link:../12/index.adoc[Next]
 
 

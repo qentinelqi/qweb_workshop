@@ -455,4 +455,4 @@ NOTE: This is just an example. It's not advisable to use get_webelement for this
 NOTE: To get more information on how to create Robot Framework keywords with Python, please take a look at https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#creating-test-libraries[Robot Framework's documentation]
 
 '''
-link:../README.md[Chapter index]
+link:../README.md[Tutorial index]
