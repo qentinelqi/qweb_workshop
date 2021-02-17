@@ -1,6 +1,8 @@
 // We must enable experimental attribute.
 :experimental:
 :icons: font
+:toc:
+:numbered:
 
 // GitHub doesn't render asciidoc exactly as intended, so we adjust settings and utilize some html
 
@@ -13,8 +15,10 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
+[[top]]
 = Extending QWeb
 
+== Intro
 While QWeb should work directly with most web elements, there may be sometimes custom functionality which makes things harder than they should be. Common examples is very deeply structured tables or dropdown lists, which are not using *<select>* and *<option>* tags that QWeb's *DropDown* keywords expects.
 
 This chapter introduces two ways of extending keywords, either by reusing functionality provided by QWeb or creating own functionality from scratch.
@@ -26,9 +30,11 @@ QWeb keywords can be extended by:
 
 Let's take a look at both of these options in detail.
 
+<<top, Table of contents>>
+
 == Creating own Robot Framework keywords
 
-Custom keywords are defined in a _resource_ file. The suggested structure in Qentinel Pace is that resource files are stored in *resources* folder in your project. Since we aim to keep the amount of custom keywords low, usually just one file, *keywords.robot* is enough. You can of course name the file anything else or have keywords for different areas of the application in different files, but we would suggest starting with a simple structure. The more files and keywords you have, the more you end up spending time finding correct place to modify if changes are needed.
+Custom keywords are defined in a _resource_ file. The suggested folder/file structure is that resource files are stored in *resources* folder in your project. Since we aim to keep the amount of custom keywords low, usually just one file, *keywords.robot* is enough. You can of course name the file anything else or have keywords for different areas of the application in different files, but we would suggest starting with a simple structure. The more files and keywords you have, the more you end up spending time finding correct place to modify if changes are needed.
 
 It's common to move the importing of needed libraries to *keywords.robot* file, especially if your custom keywords are being used in every test suite. The section headers you need in keywords resource file are:
 
@@ -50,13 +56,17 @@ Library             DateTime
 # Define your custom keywords here
 ----
 
-== Anatomy of a custom keyword
+<<top, Table of contents>>
+
+=== Anatomy of a custom keyword
 
 . Custom keyword should have unique, short and descriptive *name*.
 . It's a best practice to *document* each custom keyword
 . Custom keyword can consist of Pacewords, robot fw keywords from other libraries or even javascript
 . Custom keywords can take arguments (optional)
 . Custom keywords can return values (optional)
+
+<<top, Table of contents>>
 
 === Custom keyword name
 Custom keywords are technically named exactly as test cases, i.e. you keep keyword name on the left and indent rest of the keyword implementation with at least one tab / two spaces.
@@ -80,6 +90,8 @@ MyNewKeyword
 The capitalization or spaces/underscores in your keyword name do not matter, i.e. you could call the above keyword in your test script with *MyNewKeyword*, *mynewkeyword*, *my_new_keyword* and *My New Keyword*. They would all work exactly the same way.
 
 Use some time to find a short and descriptive keyword name. This will help with possible maintenance later!
+
+<<top, Table of contents>>
 
 === Custom keyword documentation
 All custom keywords should be properly documented. This does not only help other people looking at your implementation, but it will help you when you take a look at a keyword after 6 months.
@@ -105,13 +117,15 @@ MyNewKeyword
     Log     Hello world! 
 ----
 
-=== (Re-)Using Pacewords to create new keyword
-A custom keyword can contain one or more Pacewords or other robot framework libraries. You just need to remember to import the library which keywords you are using in your own implementation. To use Qentinel Pace's web automation keywords, import library *QWeb* as above and use any Paceword in your implementation. 
+<<top, Table of contents>>
+
+=== (Re-)Using QWeb's keywords to create new keyword
+A custom keyword can contain one or more QWeb keywords or other robot framework libraries. You just need to remember to import the library which keywords you are using in your own implementation. To use QWeb's keywords, import library *QWeb* as above and use any keyword in your implementation. 
 
 Here we will define a custom keyword to login to made up system using multiple Pacewords:
 [source, robotframework]
 ----
-# import QWeb and any other needed built-in/3rd party Robot FW libaries here
+# import QWeb and any other needed built-in/3rd party Robot FW libraries here
 Library             QWeb
 
 *** Variables ***
@@ -137,8 +151,10 @@ Login
 
 ----
 
+<<top, Table of contents>>
+
 === Using javascript
-You can also create keywords with Javascript by using Qentinel Pace's https://help.pace.qentinel.com/pacewords-reference/current/pacewords/advanced/executejavascript_qweb.html [*ExecuteJavascript*] Paceword.This is easiest to understand with an example, so let's create a custom keyword which logs page's title using Javascript
+You can also create keywords with Javascript by using QWeb's https://help.pace.qentinel.com/pacewords-reference/current/pacewords/advanced/executejavascript_qweb.html[*ExecuteJavascript*] keyword.This is easiest to understand with an example, so let's create a custom keyword which logs page's title using Javascript
 
 [source, robotframework]
 ----
@@ -166,6 +182,7 @@ ScrollToTop
     ExecuteJavascript       window.scrollTo(0,0)
 ----
 
+<<top, Table of contents>>
 
 === Arguments and return values
 Custom keyword can optionally take *arguments* or return values after processing data etc.
@@ -249,12 +266,17 @@ Doing something with the title
 
 WARNING: Try to keep the amount of custom keywords low. Please remember, that each new custom keyword also means maintenance work in the long run!
 
-== Using Python vs using Robot Framework syntax
+<<top, Table of contents>>
+
+== Python keywords
+=== Using Python vs using Robot Framework syntax
 It's advisable to create custom keywords in Python, if possible. Python is much more flexible language and can handle complex logic etc. much easier than plain robot framework. With Python you can utilize any Pacewords or even functions that are part of selenium.
 
 In this lesson we will take a look how to get the selenium webdriver instance from Qentinel Pace and how to interact with it using both functions implemented in selenium and element search functions implemented in Qentinel Pace.
 
-== Anatomy of a Python keyword
+<<top, Table of contents>>
+
+=== Anatomy of a Python keyword
 It's advisable to store all Python source files in *libraries* or *libs* folder in your project structure. Any python file can be imported as any other Robot Framework library and by default all methods defined in a file will be exposed as keywords.
 
 To start with something extremely simple, we will create a Python keyword that prints "Hello from custom Python keyword" to result log.
@@ -288,7 +310,9 @@ Library            ../libraries/my_custom_library.py
 Print message       Hello from custom Python keyword
 ----
 
-== Getting webdriver instance
+<<top, Table of contents>>
+
+=== Getting webdriver instance
 
 To get the current browser (=selenium webdriver) instance, you method *return_browser*. This can be found in module QWeb.keywords.browser. Once you have the webdriver instance, you can use any selenium properties and functions to interact with it.
 
@@ -319,7 +343,9 @@ PrintTitle Example
     CloseBrowser
 ----
 
-== Finding elements using QWeb's search functions
+<<top, Table of contents>>
+
+=== Finding elements using QWeb's search functions
 
 To find elements using QWeb's search functions, you need to import _*QWeb.keywords.element*_
 
@@ -429,4 +455,4 @@ NOTE: This is just an example. It's not advisable to use get_webelement for this
 NOTE: To get more information on how to create Robot Framework keywords with Python, please take a look at https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#creating-test-libraries[Robot Framework's documentation]
 
 '''
-link:../README.md[Back to TOC]
+link:../README.md[Chapter index]
