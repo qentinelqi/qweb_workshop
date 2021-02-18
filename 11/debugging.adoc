@@ -50,6 +50,6 @@ TIP: To exit debug mode, write `exit` to debug terminal.
 NOTE: On link:../12/setconfig.adoc#debug[next chapter] you will learn a setting that turns debugging on on every failed keyword.
 
 '''
-link:../README.md[Tutorial index]  |  link:../12/index.adoc[Next]
+link:../README.md[Tutorial index]  |  link:../12/setconfig.adoc[Next]
 
 

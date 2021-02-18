@@ -47,3 +47,5 @@ This is especially useful in case you run your tests against different environme
 
 NOTE: Try to avoid *Sleep* keyword as much as possible. The difference between QWeb's timeouts and *Sleep* keyword is that Sleep will *_ALWAYS_* wait until given time before proceeding to next keyword; QWeb timeouts will move to next keyword as soon as element is available. 
 
+'''
+link:../README.md[Tutorial index]  |  link:../07/anchors.adoc[Next]

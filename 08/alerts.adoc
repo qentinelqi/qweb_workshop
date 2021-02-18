@@ -43,4 +43,4 @@ However, if you are expecting an alert as a part of your test case, you have the
 *CloseAlert* closes alert using method specified as an argument. Valid methods to close an alert are *ACCEPT* and *DISMISS*. Accept is similar to user clicking OK/Accept or any localized button that does the same. Dismiss is similar to user clicking Cancel.
 
 '''
-link:../README.md[Back to TOC]  |  link:../09/index.adoc[Next]
+link:../README.md[Tutorial index]  |  link:../09/index.adoc[Next]

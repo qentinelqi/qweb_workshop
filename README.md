@@ -15,7 +15,7 @@ Workshop covers the following topics:
 6. [Timeouts](./06/timeouts.adoc)
 7. [Anchors](./07/anchors.adoc)
 8. [Handling Alerts](./08/alerts.adoc)
-9. Blocks
+9. [Blocks](./09/runblocks.adoc)
 10. [Table keywords](./10/tables.adoc)
 11. [Debugging](./11/debugging.adoc)
 12. [Settings / Configuration](./12/setconfig.adoc)

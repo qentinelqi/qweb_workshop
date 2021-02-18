@@ -126,6 +126,6 @@ These keywords can verify status of element (i.e if it can be interacted with or
 TODO
 
 '''
-link:../README.md[Back to TOC]  |  link:../04/index.adoc[Next]
+link:../README.md[Tutorial index]  |  link:../04/index.adoc[Next]
 
 

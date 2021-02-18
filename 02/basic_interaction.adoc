@@ -173,6 +173,6 @@ ClickText examples
 TODO
 
 '''
-link:../README.md[Back to TOC]  |  link:../03/index.adoc[Next]
+link:../README.md[Tutorial index]  |  link:../03/index.adoc[Next]
 
 

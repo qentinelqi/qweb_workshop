@@ -105,6 +105,6 @@ Size
 ## Exercise - Browser
 
 '''
-link:../README.md[Back to TOC]  |  link:../02/index.adoc[Next]
+link:../README.md[Tutorial index]  |  link:../02/index.adoc[Next]
 
 

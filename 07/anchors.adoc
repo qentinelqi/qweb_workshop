@@ -125,4 +125,4 @@ ClickCell       r2c6   tag=button
 
 
 '''
-link:../README.md[Back to TOC]  |  link:../08/alerts.adoc[Next]
+link:../README.md[Tutorial index]  |  link:../08/alerts.adoc[Next]

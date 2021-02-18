@@ -144,6 +144,5 @@ Opening context menu by xpath
 https://help.pace.qentinel.com/pacewords-reference/current/pacewords/interaction/clickwhile_qweb.html[Paceword documentation: Click While]
 
 '''
-link:../README.md[Back to TOC]  |  link:../06/timeouts.adoc[Next]
+link:../README.md[Tutorial index]  |  link:../06/timeouts.adoc[Next]
 
-// TODO: ClickWhile video
