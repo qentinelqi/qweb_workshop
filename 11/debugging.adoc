@@ -15,7 +15,46 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
-# Debugging
+# Helpers: Documentation & Debugging
+
+QWeb has two helper features to aid you while creating test automation scripts. It contains a command-line interface to display keyword documentation and is integrated to `robotframework-debugger / rfdebug` for stopping the execution and turning on debugging when needed.
+
+## Command-line interface
+
+QWeb's command-line interface guarantees you always have access to the latest available keyword documentation. On a terminal, type:
+
+.Windows
+```shell
+python QWeb --help
+```
+
+.Linux/Mac
+```shell
+python3 QWeb --help
+```
+...to display commands:
+
+```
+❯ python QWeb --help
+usage: python QWeb [options] INPUT
+
+EXAMPLES:
+QWeb --all (lists all keywords)
+QWeb --list Get (lists all keywords startin with "Get")
+QWeb --show TypeText (displays documentation for keyword "TypeText")
+
+Note: This module is meant to be used as a robot famework library.Command line
+interface only provides access to keyword documentation.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -V, --version         show program's version number and exit
+  -A, --all             lists ALL keywords
+  -L LIST, --list LIST  lists keywords based on input string
+  -S SHOW, --show SHOW  show docs for keyword(s)
+```
+
+## Debugging
 
 You can turn on debugging temporarily using keyword *DebugOn* and turn it off temporarily by using keyword *DebugOff*.
 

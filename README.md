@@ -9,15 +9,15 @@ Workshop covers the following topics:
 
 1. [Controlling browser](./01/browser.adoc)
 2. [Basic interactions](./02/basic_interaction.adoc)
-3. [Assertions](.03/assertions.adoc)
-4. Getting data
+3. [Assertions](./03/assertions.adoc)
+4. [Getting data](./04/getters.adoc)
 5. [Advanced clicking](./05/clicking_advanced.adoc)
 6. [Timeouts](./06/timeouts.adoc)
 7. [Anchors](./07/anchors.adoc)
 8. [Handling Alerts](./08/alerts.adoc)
 9. [Blocks](./09/runblocks.adoc)
 10. [Table keywords](./10/tables.adoc)
-11. [Debugging](./11/debugging.adoc)
+11. [Helpers: Documentation & Debugging](./11/debugging.adoc)
 12. [Settings / Configuration](./12/setconfig.adoc)
 13. [Extending QWeb](./13/extending_qweb.adoc)
 

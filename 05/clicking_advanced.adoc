@@ -23,7 +23,7 @@ While Pacewords *ClickText* and *ClickElement* are extremely useful and are used
 
 == RightClick
 
-Some more complex web applications implement their own right-click context menu. This usually can't be opened with normal (left) clicks using *ClickText* or *ClickElement* keywords. To open a right-click context menu, you need to use keyword *RightClick*. It needs at least one argument, the locator with which to find the element to right-click. The locator can be either value of one of the element's attributes if additional *tag* argument is given or it can be a xpath.
+Some more complex web applications implement their own right-click context menu. This usually can't be opened with normal (left) clicks using *ClickText* or *ClickElement* keywords. To open a right-click context menu, you need to use keyword *RightClick*. It needs at least one argument, the locator with which to find the element to right-click. The locator can be either *xpath* or, if additional *tag* argument is given, value of one of the element's attributes.
 
 WARNING: At the time of writing plain text can not be used as a locator for this Paceword.
 
@@ -63,7 +63,7 @@ Library                     QWeb
 Opening context menu by xpath
     OpenBrowser             https://swisnl.github.io/jQuery-contextMenu/demo.html   chrome
     RightClick              //span[text()\="right click me"]
-    ClickText               Quit
+    ClickText               Quit            tag=span
 ----
 
 * ...specifying a tag and use one of the element's attributes
@@ -77,7 +77,7 @@ Library                     QWeb
 Opening context menu by xpath
     OpenBrowser             https://swisnl.github.io/jQuery-contextMenu/demo.html   chrome
     RightClick              btn-neutral     tag=span
-    ClickText               Quit
+    ClickText               Quit            tag=span
 ----
 
 TIP: https://help.pace.qentinel.com/pacewords-reference/current/pacewords/interaction/rightclick_qweb.html[Paceword documentation: Right-click]

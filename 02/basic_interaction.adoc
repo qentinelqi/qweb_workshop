@@ -80,7 +80,7 @@ Click element specified by xpath.
 Library                     QWeb
 
 *** Test Cases ***
-ClickText examples
+ClickElement examples
     ...
     ClickElement        //*[@id="click_me"] 
     ClickElement        xpath=//*[@id="click_me"]
@@ -104,7 +104,7 @@ Arguments:
 Library                     QWeb
 
 *** Test Cases ***
-ClickText examples
+TypeText examples
     ...
     TypeText        Email       test@test.com   # writes email address to field having placeholder “Email” visible
     TypeText        Address     Main street     Delivery Address
@@ -135,10 +135,10 @@ Arguments:
 Library                     QWeb
 
 *** Test Cases ***
-ClickText examples
+DropDown examples
     ...
     DropDown        City        London
-    DropDown        xpath=//*[@id=”dd_list”     London
+    DropDown        xpath=//*[@id=”dd_list”]     London
 ----
 
 ### ClickCheckbox
@@ -160,7 +160,7 @@ Arguments:
 Library                     QWeb
 
 *** Test Cases ***
-ClickText examples
+ClickCheckbox examples
     ...
     ClickCheckbox    I am not a robot    on
     ClickCheckbox    I am not a robot    off
@@ -170,9 +170,15 @@ ClickText examples
 
 ## Exercise
 
-TODO
+. Go to https://qentinelqi.github.io/shop/
+. Add product "Scar the Lion" to shopping cart
+. Select "Large" as size of a t-shirt
+. Set quantity of products to 4
+. Checkout
+. Fill in "Full Name", "Email" and "Billing Address"
+. Change your mind and edit cart, remove product from cart and verify cart is empty
 
 '''
-link:../README.md[Tutorial index]  |  link:../03/index.adoc[Next]
+link:../README.md[Tutorial index]  |  link:../03/assertions.adoc[Next]
 
 

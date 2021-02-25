@@ -104,7 +104,13 @@ Size
 
 ## Exercise - Browser
 
+1. Open Chrome and navigate to https://www.google.com
+2. Open new tab/window. Navigate to https://qentinelqi.github.io/shop/
+3. Change browser window size to 
+4. Set focus to first window (Google) and navigate to https://qentinelqi.github.io/shop/
+5. Close all browser windows
+
 '''
-link:../README.md[Tutorial index]  |  link:../02/index.adoc[Next]
+link:../README.md[Tutorial index]  |  link:../02/basic_interaction.adoc[Next]
 
 

@@ -1,0 +1,93 @@
+// We must enable experimental attribute.
+:experimental:
+:icons: font
+
+// GitHub doesn't render asciidoc exactly as intended, so we adjust settings and utilize some html
+
+ifdef::env-github[]
+
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+# Get data
+
+Sometimes, instead of asserting or verifying that the data is as expected, you need to *get* the data; either in order manipulate it or use it later.
+
+For this QWeb provides a number of *"getters"*, i.e keywords for getting data to variables. These keywords usually begin with word *Get*. Here is a list of Get keywords in QWeb:
+
+* GetAlertText
+* GetCellText
+* GetConfig
+* GetDropDownValues
+* GetElementCount
+* GetFileText
+* GetInputValue
+* GetList
+* GetPdfText
+* GetSelected
+* GetTableRow
+* GetText
+* GetTextCount
+* GetWebelement
+
+Many of these will be covered in later chapters (for example GetCellText & GetTableRow in chapter `10 - Tables`), but we'll cover most common ones below.
+
+## GetText
+
+GetText is meant for getting element's text into a variable. It takes at least one mandatory argument, _locator_. Locator can be either xpath or any attribute value of an element with specific tag defined. For example:
+
+[source, robotframework]
+----
+*** Settings ***
+Library                     QWeb
+
+*** Test Cases ***
+GetText examples
+    ${text}=    GetText     //button[@data-toggle\="dropdown"]      # using xpath
+    ${text}=    GetText     dropdown   tag=button                   # using tag+attribute value
+----
+
+## GetTextCount
+
+GetTextCount returns the amount of specific texts on the page. It takes the text being searched for as an argument.
+
+[source, robotframework]
+----
+*** Settings ***
+Library                     QWeb
+
+*** Test Cases ***
+GetTextCount examples
+    ${count}=    GetTextCount     New York  # waiting default 10 secs before returning 0
+----
+
+## GetInputValue
+
+GetInputValue returns the text written in an input field. It has mandatory argument _locator_, which can be text, xpath or any unique attribute's value.
+
+[source, robotframework]
+----
+*** Settings ***
+Library                     QWeb
+
+*** Test Cases ***
+GetInputValue examples
+    ${text}=   GetInputValue    Full Name       # using label near text field
+    ${text}=   GetInputValue    name            # using attribute value (id = name)
+    ${text}=   GetInputValue    //input[@id\="name"]            # using xpath
+    ${text}=   GetInputValue    Haku            # using attribute value (alt text)
+----
+
+
+## Exercise
+
+TODO
+
+'''
+link:../README.md[Tutorial index]  |  link:../05/clicking_advanced.adoc[Next]
+
+
