@@ -1,6 +1,7 @@
 // We must enable experimental attribute.
 :experimental:
 :icons: font
+:toc:
 
 // GitHub doesn't render asciidoc exactly as intended, so we adjust settings and utilize some html
 
@@ -41,6 +42,17 @@ However, if you are expecting an alert as a part of your test case, you have the
 *TypeAlert* types text into alert that contains an input element
 
 *CloseAlert* closes alert using method specified as an argument. Valid methods to close an alert are *ACCEPT* and *DISMISS*. Accept is similar to user clicking OK/Accept or any localized button that does the same. Dismiss is similar to user clicking Cancel.
+
+## Exercise
+
+Build on top of the right-click example on chapter 5.
+
+. Go to hhttps://swisnl.github.io/jQuery-contextMenu/demo.html
+. RightClick button "right click me"
+. Select (click) option "Copy" from the context menu
+. Verify that alert with text "clicked: copy" appears
+. Close the alert (Accept)
+
 
 '''
 link:../README.md[Tutorial index]  |  link:../09/runblocks.adoc[Next]

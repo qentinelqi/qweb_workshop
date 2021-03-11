@@ -1,6 +1,7 @@
 // We must enable experimental attribute.
 :experimental:
 :icons: font
+:toc:
 
 // GitHub doesn't render asciidoc exactly as intended, so we adjust settings and utilize some html
 
@@ -17,7 +18,7 @@ endif::[]
 
 
 == Introduction to anchors
-Sometimes webpage contains multiple, duplicated UI texts. While QWeb tries it's best to click only elements that are actually clickable, you may face situations where there are duplicated elements and clicks go to the "wrong" one. This is where concept of *anchors* steps in.
+Sometimes webpage contains multiple, duplicated UI texts. While QWeb tries its best to click only elements that are actually clickable, you may face situations where there are duplicated elements and clicks go to the "wrong" one. This is where concept of *anchors* steps in.
 
 In nutshell, anchors are little hints to underlying test execution framework on which of the duplicate elements to select. They work with basically all interaction keywords which uses UI text as a locator (for example ClickText, TypeText etc.)
 
@@ -45,9 +46,9 @@ ClickText    Login      anchor=3
 ...QWeb would click third instance of element containing text *Login*.
 
 == Anchor example
-We will use https://www.salesforce.com/uk/[Salesforce's UK pages] as an example on how to use anchors. At the time of writing, there were these areas roughly on the middle of the page:
+We will use https://info.qentinel.com/events[Qentinel's events page] as an example on how to use anchors. At the time of writing, there were these events on the page:
 [.left]
-image::salesforce_uk_demos.png[Salesforce demo]
+image::../images/qentinel_event_links.png[Qentinel events page]
 {empty} +
 {empty} +
 {empty} +
@@ -57,9 +58,9 @@ image::salesforce_uk_demos.png[Salesforce demo]
 {empty} +
 {empty} +
 
-If we would want to watch specific demo, say for "Service", we would need to use anchors.
+If we would want to read more about specific event, say for "RoboCon", we would need to use anchors.
 
-Here is a little example script that would open all first 4 demos one-by-one:
+Here is a little example script that would show how to open details of all events:
 
 
 [source, robotframework]
@@ -68,14 +69,18 @@ Here is a little example script that would open all first 4 demos one-by-one:
 Library                     QWeb
 
 *** Test Cases ***
-Opening context menu by xpath
-    OpenBrowser             https://www.salesforce.com/uk/   chrome
-    ClickText               WATCH DEMO  # by default Qentinel QWeb clicks the first one
-    ClickText               WATCH DEMO  anchor=Sales    # opens second one, Sales, using textual anchor
-    ClickText               WATCH DEMO  anchor=2        # opens second one, Sales, using numeric anchor
-    ClickText               WATCH DEMO  anchor=Service  # opens third one, Service, using textual anchor
-    ClickText               WATCH DEMO  anchor=Marketing  # opens fourth one, Marketing, using textual anchor
+Opening event details
+    OpenBrowser             https://info.qentinel.com/events   chrome
+    ClickText               READ MORE  # by default Qentinel QWeb clicks the first one
+
+    ClickText               READ MORE  anchor=RoboCon    # opens second one, "RoboCon", using textual anchor
+
+    ClickText               READ MORE  anchor=2        # opens second one, "RoboCon", using numeric anchor
+
+    ClickText               READ MORE  anchor=Release Demo        # opens second one, "March Release Demo", using numeric anchor
 ----
+
+NOTE: Example above omits all verifications or navigating back to previous page.
 
 TIP: Using textual anchors is preferred at least in lists and tables where item position can frequently change.
 
@@ -87,42 +92,15 @@ In addition to "anchors", many key allow specifying the HTML tag for the element
 
 The above can be done with *tag*, *parent* or *child* arguments. Please check each keyword's documentation to find out which of these it supports. As an example, we will use *ClickItem* that supports *tag* argument and *ClickText* which supports *parent* and *child* arguments. 
 
-To demonstrate how parent & child arguments work, we will use Salesforce, this time as logged in person. We'll use the table in "Leads" section of Salesforce:
-
-
-[.left]
-image::salesforce_leads_table.png[Salesforce Leads Table]
-{empty} +
-{empty} +
-{empty} +
-{empty} +
-{empty} +
-{empty} +
-{empty} +
-{empty} +
-
-Notice, that Email cell of the table contains both a link (the email address) and an Edit icon.
-The HTML source for that cell is as follows:
-
-[source, html]
+There will be an example in link:../10/tables.adoc#ClickCell[Table keywords] chapter about this using *tag* argument.
 ----
-<td role="gridcell" class="slds-cell-edit cellContainer" tabindex="-1" data-aura-class="forceInlineEditCell" data-aura-rendered-by="1510:0"><span class="slds-grid slds-grid--align-spread forceInlineEditCell" data-aura-rendered-by="1518:0" data-aura-class="forceInlineEditCell"><a class="slds-truncate emailuiFormattedEmail" href="mailto:tina.smith@gmail.com" data-aura-rendered-by="1514:0" data-aura-class="emailuiFormattedEmail">tina.smith@gmail.com</a><span class="triggerContainer" data-aura-rendered-by="1520:0"><button class="slds-button trigger slds-button_icon-border" type="button" data-aura-rendered-by="1523:0"><span data-aura-rendered-by="1526:0"><svg class="slds-button__icon" focusable="false" aria-hidden="true" data-key="edit">
-<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg?cache=9.36.1#edit"></use>
-</svg></span><span class="slds-assistive-text" data-aura-rendered-by="1578:0">Edit Email: Item 1</span></button></span></span></td>
-----
-There's <a> tag for the email address and <button> tag for the *Edit* icon.
+## Exercise
 
-If you just click the table cell, QWeb will do exactly as instructed and click the default clickable action in that cell. In this particular situation it would try to send email to the person.
+Build on top of the example above. Use the same Qentinel's event page.
 
-However, if you intent to click the embedded icon in a cell, you can do this with the *tag* attribute. 
-
-[source, robotframework]
-----
-# Note, this example contains table related keywords which will be gone through later in this course
-UseTable        Name
-ClickCell       r2c6   tag=button
-----
-
+. Go to https://info.qentinel.com/events
+. Click "READ MORE" on event "Qentinel Pace Release Demo" using anchor
+. Verify that text "Monthly demo series demonstrates the main features of the latest Qentinel Pace release" appears on detailed info page.
 
 '''
 link:../README.md[Tutorial index]  |  link:../08/alerts.adoc[Next]

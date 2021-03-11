@@ -1,6 +1,7 @@
 // We must enable experimental attribute.
 :experimental:
 :icons: font
+:toc:
 
 // GitHub doesn't render asciidoc exactly as intended, so we adjust settings and utilize some html
 
@@ -114,7 +115,19 @@ TypeText examples
 
 `TypeSecret   locator     text    anchor`
 
-Types text to given input field but does not log written text to log.
+Types text to given input field but does not log written text to log. TypeSecret is usually used with passwords, tokens and otheer secrets.
+
+[source, robotframework]
+----
+*** Settings ***
+Library                     QWeb
+
+*** Test Cases ***
+TypeSecret examples
+    ...
+    TypeText        Email       test@test.com   # writes email address to field having placeholder “Email” visible
+    TypeSecret      Password     ${PASSWORD}    # writes variable ${PASSWORD} content to password field but does not log what is written
+----
 
 ### Dropdown
 

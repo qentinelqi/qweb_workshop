@@ -1,6 +1,7 @@
 // We must enable experimental attribute.
 :experimental:
 :icons: font
+:toc:
 
 // GitHub doesn't render asciidoc exactly as intended, so we adjust settings and utilize some html
 

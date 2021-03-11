@@ -1,6 +1,7 @@
 // We must enable experimental attribute.
 :experimental:
 :icons: font
+:toc:
 
 // GitHub doesn't render asciidoc exactly as intended, so we adjust settings and utilize some html
 
@@ -123,7 +124,22 @@ These keywords can verify status of element (i.e if it can be interacted with or
 
 ## Exercise
 
-TODO
+Build on top of the exercise on previous chapter, but this time verify that:
+
+*  Text "The animal friendly clothing company" is displayed on main page
+* The amount of items in cart is "1"
+* The quantity of products is 4 after increasing amount before going to checkout
+* Text "Your cart is empty." is displayed after removing items from cart
+
+Here is previous chapters exercise again:
+
+. Go to https://qentinelqi.github.io/shop/
+. Add product "Scar the Lion" to shopping cart
+. Select "Large" as size of a t-shirt
+. Set quantity of products to 4
+. Checkout
+. Fill in "Full Name", "Email" and "Billing Address"
+. Change your mind and edit cart, remove product from cart and verify cart is empty
 
 '''
 link:../README.md[Tutorial index]  |  link:../04/getters.adoc[Next]

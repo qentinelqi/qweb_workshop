@@ -2,7 +2,6 @@
 :experimental:
 :icons: font
 :toc:
-:numbered:
 
 // GitHub doesn't render asciidoc exactly as intended, so we adjust settings and utilize some html
 
@@ -35,7 +34,7 @@ python3 -m QWeb --help
 ...to display commands:
 
 ```
-❯ python QWeb --help
+❯ python -m QWeb --help
 usage: python QWeb [options] INPUT
 
 EXAMPLES:

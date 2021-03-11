@@ -1,6 +1,7 @@
 // We must enable experimental attribute.
 :experimental:
 :icons: font
+:toc:
 
 // GitHub doesn't render asciidoc exactly as intended, so we adjust settings and utilize some html
 
@@ -70,7 +71,7 @@ GiveMeFive
     VerifyText              5           timeout=2       # Let's only wait for 2 seconds
 ----
 
-Then we would call this keywords with RunBlock and instruct RunBlock to close browser on failures:
+Then we would call this keywords with RunBlock and instruct RunBlock to close & re-open browser on failures:
 
 [source, robot framework]
 ----
@@ -80,7 +81,7 @@ Library                     QWeb
 *** Test Cases ***
 RunBlock demo
     OpenBrowser             file://${CURDIR}/../examples/random.html   chrome
-    RunBlock                 GiveMeFive      timeout=180s    exp_handler=CloseBrowser
+    RunBlock                 GiveMeFive      timeout=180s    exp_handler=RebootBrowser
 
 
 *** Keywords ***
@@ -102,7 +103,7 @@ Library                     QWeb
 
 *** Test Cases ***
 RunBlock demo
-    RunBlock                GiveMeFive      timeout=180s    exp_handler=CloseBrowser
+    RunBlock                GiveMeFive      timeout=180s    exp_handler=RebootBrowser
     ClickText               Click Me            # click button again
     ClickText               Click Me            # click button again
     ${after_five}           GetText         //*[@id\="demo"]
@@ -112,6 +113,10 @@ RunBlock demo
 GiveMeFive
     ClickText               Click Me
     VerifyText              5           timeout=2       # Let's only wait for 2 seconds
+
+RebootBrowser
+    CloseBrowser
+    OpenBrowser             file://${CURDIR}/../examples/random.html   chrome
 ----
 
 You can run this example test case from repo root with command:

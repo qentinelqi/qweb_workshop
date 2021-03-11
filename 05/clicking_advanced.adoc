@@ -1,6 +1,7 @@
 // We must enable experimental attribute.
 :experimental:
 :icons: font
+:toc:
 
 // GitHub doesn't render asciidoc exactly as intended, so we adjust settings and utilize some html
 
@@ -91,10 +92,11 @@ In some complex, heavily integrated web applications it sometimes takes time bef
 For these kind of special cases we have two Pacewords, *ClickUntil* and *ClickWhile*. In this topic we will cover *ClickUntil*.
 
 Here is how *ClickUntil* Paceword works in nutshell:
+
 . It will find the text given as a second argument and click it
 . It will check until text given as first argument appears. If it does not, *ClickUntil* will click the first text again.
 
-We will use link:../examples/random.html[this page] as example. You can either right-click it and store it locally or take a note of the url of the page in learning system.
+We will use static page link:../examples/random.html[../examples/random.html] as an example. If you have not already cloned this repo, the do so now or alternatively right-click the link above and store the page locally.
 
 The page is very simple. There is a button "Click Me" which produces random number. In order to click the button *until* number *3* is displayed, we can use *ClickUntil*:
 
@@ -138,10 +140,28 @@ Library                     QWeb
 *** Test Cases ***
 Opening context menu by xpath
     OpenBrowser             file://C:/automation/random.html   chrome      # if test page has been store locally to c:\automation folder
-    ClickWhile condition not met           Click Me  timeout=30   interval=1
+    ClickWhile      condition not met       Click Me  timeout=30   interval=1
 ----
 
-https://help.pace.qentinel.com/pacewords-reference/current/pacewords/interaction/clickwhile_qweb.html[Paceword documentation: Click While]
+https://help.pace.qentinel.com/pacewords-reference/current/pacewords/interaction/clickwhile_qweb.html[Paceword documentation: ClickWhile]
+
+## Exercise
+
+Build on top of the examples above and using the same example pages, create 3 test cases:
+
+. Test Case 1
+  .. Open page https://swisnl.github.io/jQuery-contextMenu/demo.html   chrome
+  .. Right-click button "right-click me"
+  .. Click "Delete" from the context menu when it opens
+. Test Case 2
+  .. Open page random.html from ../examples folder
+  .. Click button "Click Me" until number "8" appears
+. Test Case 3
+  .. Open page random.html from ../examples folder
+  .. Click button "Click Me" until "ClickWhile condition was not met" disappears
+  .. Wait maximum of 45 seconds for this to happen and click button in 2 second intervals
+ 
+
 
 '''
 link:../README.md[Tutorial index]  |  link:../06/timeouts.adoc[Next]

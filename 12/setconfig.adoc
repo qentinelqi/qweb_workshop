@@ -2,7 +2,6 @@
 :experimental:
 :icons: font
 :toc:
-:numbered:
 
 // GitHub doesn't render asciidoc exactly as intended, so we adjust settings and utilize some html
 
