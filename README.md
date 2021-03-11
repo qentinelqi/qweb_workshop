@@ -7,15 +7,15 @@ In this workshop, we cover the main features of [QWeb](https://github.com/qentin
 
 Workshop covers the following topics:
 
-1. [Controlling browser](./01/browser.adoc)
+1. [Interacting with browser](./01/browser.adoc)
 2. [Basic interactions](./02/basic_interaction.adoc)
 3. [Assertions](./03/assertions.adoc)
-4. [Getting data](./04/getters.adoc)
+4. [Get data](./04/getters.adoc)
 5. [Advanced clicking](./05/clicking_advanced.adoc)
 6. [Timeouts](./06/timeouts.adoc)
 7. [Anchors](./07/anchors.adoc)
 8. [Handling Alerts](./08/alerts.adoc)
-9. [Blocks](./09/runblocks.adoc)
+9. [Run Blocks](./09/runblocks.adoc)
 10. [Table keywords](./10/tables.adoc)
 11. [Helpers: Documentation & Debugging](./11/debugging.adoc)
 12. [Settings / Configuration](./12/setconfig.adoc)

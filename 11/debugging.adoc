@@ -25,12 +25,12 @@ QWeb's command-line interface guarantees you always have access to the latest av
 
 .Windows
 ```shell
-python QWeb --help
+python -m QWeb --help
 ```
 
 .Linux/Mac
 ```shell
-python3 QWeb --help
+python3 -m QWeb --help
 ```
 ...to display commands:
 

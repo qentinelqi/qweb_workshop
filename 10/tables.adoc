@@ -13,7 +13,7 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
-= Working with tables
+= Table keywords
 
 == Introduction to tables
 

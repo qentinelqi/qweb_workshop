@@ -13,7 +13,7 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
-# Interacting with elements
+# Basic interactions
 
 ## About selectors
 

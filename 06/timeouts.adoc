@@ -13,7 +13,7 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
-= Changing timeouts
+= Timeouts
 
 Almost all QWeb keywords have an inbuilt *timeout*, i.e they keep re-trying to find elements and do their action until action succeeds OR until timeout limit is reached. By default this timeout limit is *10 seconds*.
 

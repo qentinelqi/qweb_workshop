@@ -13,7 +13,7 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
-= Right-click, Click until & Click while
+= Advanced clicking
 
 While Pacewords *ClickText* and *ClickElement* are extremely useful and are used in almost all test cases, there are sometimes needs to do more "advanced" clicking. In this chapter we will take a look at other Pacewords related to clicking:
 

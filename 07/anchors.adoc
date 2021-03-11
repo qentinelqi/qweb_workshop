@@ -13,7 +13,7 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
-= Anchors - guiding which element should be selected
+= Anchors
 
 
 == Introduction to anchors
