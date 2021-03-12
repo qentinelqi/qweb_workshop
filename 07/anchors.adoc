@@ -90,10 +90,11 @@ TIP: Using textual anchors is preferred at least in lists and tables where item 
 
 In addition to "anchors", many key allow specifying the HTML tag for the element we should be interacting with, it's parent tag or it's child tag. This is especially useful if there are multiple items with same text or other attribute, but with different tags. Or, if the text attribute is actually either a child or parent of the element which reacts to clicks.
 
-The above can be done with *tag*, *parent* or *child* arguments. Please check each keyword's documentation to find out which of these it supports. As an example, we will use *ClickItem* that supports *tag* argument and *ClickText* which supports *parent* and *child* arguments. 
+The above can be done with *tag*, *parent* or *child* arguments. Please check each keyword's documentation to find out which of these it supports. 
 
-There will be an example in link:../10/tables.adoc#ClickCell[Table keywords] chapter about this using *tag* argument.
-----
+There will be examples about this later, in link:../05/clicking_advanced.adoc#RightClick[Advanced Clicking] and in link:../10/tables.adoc#ClickCell[Table keywords] chapters using *tag* argument.
+
+
 ## Exercise
 
 Build on top of the example above. Use the same Qentinel's event page.
