@@ -103,5 +103,14 @@ Build on top of the example above. Use the same Qentinel's event page.
 . Click "READ MORE" on event "Qentinel Pace Release Demo" using anchor
 . Verify that text "Monthly demo series demonstrates the main features of the latest Qentinel Pace release" appears on detailed info page.
 
+### Solution
+
+Exercise example solution can be found the repo. Please try to implement your own solution first before looking at the provided solution.
+
+Run this solution from repo root by:
+```
+robot ./07/07_solution.robot 
+```
+
 '''
 link:../README.md[Tutorial index]  |  link:../08/alerts.adoc[Next]
