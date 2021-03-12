@@ -186,11 +186,19 @@ ClickCheckbox examples
 . Go to https://qentinelqi.github.io/shop/
 . Add product "Scar the Lion" to shopping cart
 . Select "Large" as size of a t-shirt
-. Set quantity of products to 4
+. Set quantity of products to 2
 . Checkout
 . Fill in "Full Name", "Email" and "Billing Address"
 . Change your mind and edit cart, remove product from cart and verify cart is empty
 
+### Solution
+
+Exercise example solution can be found the repo. Please try to implement a solution first before looking at the solution.
+
+Run this solution from repo root by:
+```
+robot ./02/02_solution.robot 
+```
 '''
 link:../README.md[Tutorial index]  |  link:../03/assertions.adoc[Next]
 

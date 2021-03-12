@@ -111,6 +111,14 @@ Size
 4. Set focus to first window (Google) and navigate to https://qentinelqi.github.io/shop/
 5. Close all browser windows
 
+### Solution
+
+Exercise example solution can be found the repo. Please try to implement a solution first before looking at the solution.
+
+Run this solution from repo root by:
+```
+robot ./01/01_solution.robot 
+```
 '''
 link:../README.md[Tutorial index]  |  link:../02/basic_interaction.adoc[Next]
 
