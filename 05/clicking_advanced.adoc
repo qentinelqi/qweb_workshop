@@ -64,7 +64,7 @@ Library                     QWeb
 Opening context menu by xpath
     OpenBrowser             https://swisnl.github.io/jQuery-contextMenu/demo.html   chrome
     RightClick              //span[text()\="right click me"]
-    ClickText               Quit            tag=span
+    ClickText               Quit            anchor=Demo: Simple Context Menu
 ----
 
 * ...specifying a tag and use one of the element's attributes
@@ -78,7 +78,7 @@ Library                     QWeb
 Opening context menu by xpath
     OpenBrowser             https://swisnl.github.io/jQuery-contextMenu/demo.html   chrome
     RightClick              btn-neutral     tag=span
-    ClickText               Quit            tag=span
+    ClickText               Quit            anchor=Demo: Simple Context Menu
 ----
 
 TIP: https://help.pace.qentinel.com/pacewords-reference/current/pacewords/interaction/rightclick_qweb.html[Paceword documentation: Right-click]

@@ -15,7 +15,7 @@ Exercise 05 - Test 1
     RightClick              //span[text()\="right click me"]
     
     # 3. Click "Delete" from the context menu when it opens
-    ClickText               Delete            tag=span
+    ClickText               Delete            anchor=Demo: Simple Context Menu
     
     # Sleep & Log Screenshot here only for getting screenshot to logs
     Sleep                   2

@@ -53,6 +53,14 @@ Build on top of the right-click example on chapter 5.
 . Verify that alert with text "clicked: copy" appears
 . Close the alert (Accept)
 
+### Solution
+
+Exercise example solution can be found the repo. Please try to implement your own solution first before looking at the provided solution.
+
+Run this solution from repo root by:
+```
+robot ./08/08_solution.robot 
+```
 
 '''
 link:../README.md[Tutorial index]  |  link:../09/runblocks.adoc[Next]
