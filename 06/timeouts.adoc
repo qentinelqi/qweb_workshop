@@ -56,5 +56,15 @@ To really see how timeouts work, we'll create 3 failing test cases with differen
 . Verify non-existing text using default timeout, 15 second timeout and 45 second timeout
 . Run the test suite and examine the logs. Was the timeout as expected?
 
+### Solution
+
+Exercise example solution can be found the repo. Please try to implement your own solution first before looking at the provided solution.
+
+Run this solution from repo root by:
+```
+robot ./06/06_solution.robot 
+```
+
+
 '''
 link:../README.md[Tutorial index]  |  link:../07/anchors.adoc[Next]

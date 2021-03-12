@@ -193,7 +193,7 @@ ClickCheckbox examples
 
 ### Solution
 
-Exercise example solution can be found the repo. Please try to implement a solution first before looking at the solution.
+Exercise example solution can be found the repo. Please try to implement your own solution first before looking at the provided solution.
 
 Run this solution from repo root by:
 ```
