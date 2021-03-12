@@ -93,11 +93,22 @@ Build on top of the exercise on previous chapter, but this time get data to vari
 . Add product "Scar the Lion" to shopping cart
 . (NEW): Get price of the item to variable ${item_price} and log it
 . Select "Large" as size of a t-shirt
-. Set quantity of products to 4
-. (NEW): Get total price of all items to variable ${total_price} and log it
+. Set quantity of products to 2
 . Checkout
 . Fill in "Full Name", "Email" and "Billing Address"
+. (NEW): Get total price of all items to variable ${total_price} and log it
 . Change your mind and edit cart, remove product from cart and verify cart is empty
+
+TIP: GetText returns value in an element immediately without waiting. You may want to take this into account and verify something from the new view before getting data, since sometimes it might take a while before text is actually available.
+
+### Solution
+
+Exercise example solution can be found the repo. Please try to implement a solution first before looking at the solution.
+
+Run this solution from repo root by:
+```
+robot ./04/04_solution.robot 
+```
 
 '''
 link:../README.md[Tutorial index]  |  link:../05/clicking_advanced.adoc[Next]
