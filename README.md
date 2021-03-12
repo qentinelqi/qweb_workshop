@@ -3,7 +3,7 @@
 
 
 ## Workshop Description
-In this workshop, we cover the main features of [QWeb](https://github.com/qentinelqi/qweb_test), an open-source (robotframework) web application testing library.
+In this workshop, we cover the main features of [QWeb](https://github.com/qentinelqi/qweb), an open-source (robotframework) web application testing library.
 
 Workshop covers the following topics:
 
