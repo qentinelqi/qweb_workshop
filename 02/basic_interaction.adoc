@@ -1,0 +1,205 @@
+// We must enable experimental attribute.
+:experimental:
+:icons: font
+:toc:
+
+// GitHub doesn't render asciidoc exactly as intended, so we adjust settings and utilize some html
+
+ifdef::env-github[]
+
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+# Basic interactions
+
+## About selectors
+
+Most QWeb keywords (TypeText, Dropdown etc.) support *textual* , *xpaths* and unique *attribute values* as selectors. We do suggest using visible UI texts when possible as this leads to less and especially much easier maintenance effort.
+
+Clicking elements can be done with specific keywords:
+
+* *ClickText* for UI texts
+* *ClickItem* when using any attribute value (e.g. alt text)
+* *ClickElement* when using xpaths
+
+
+## Keywords
+
+
+### ClickText
+`ClickText  	  	text   	anchor`
+
+Click text on web page. Note that text can be anything visible on the screen that has text, i.e. buttons, list values etc.
+
+Arguments: 
+
+* text = Text to be clicked
+* anchor = another text close to text we are looking for or index
+
+[source, robotframework]
+----
+*** Settings ***
+Library                     QWeb
+
+*** Test Cases ***
+ClickText examples
+    ...
+    ClickText           Save
+    ClickText           Save    3   # clicks third instance of text “Save”
+    ClickText           Save    Submit	# clicks text “Save” near text “Submit”
+----
+
+### ClickItem
+`ClickItem      attribute_value`
+
+Clicks and item based on any attribute value. Usually used for elements that don't have text property (e.g. icons), but have some unique property. For example alt text is a good candidate.
+
+[source, robotframework]
+----
+*** Settings ***
+Library                     QWeb
+
+*** Test Cases ***
+ClickItem examples
+    ...
+    ClickItem           click_me        # id value click_me
+    ClickItem           Increment quantity  # alt text value "Increment quantity"
+----
+
+### ClickElement
+`ClickElement   xpath`
+
+Click element specified by xpath.
+
+[source, robotframework]
+----
+*** Settings ***
+Library                     QWeb
+
+*** Test Cases ***
+ClickElement examples
+    ...
+    ClickElement        //*[@id="click_me"] 
+    ClickElement        xpath=//*[@id="click_me"]
+----
+
+### TypeText
+`TypeText   locator     text    anchor`
+
+Types text to given input field.
+
+
+Arguments:   
+
+* locator = text (placeholder, value etc.) or xpath to find the input field  
+* text = Text that will be typed,
+* anchor = another text close to input field we are looking for or index
+
+[source, robotframework]
+----
+*** Settings ***
+Library                     QWeb
+
+*** Test Cases ***
+TypeText examples
+    ...
+    TypeText        Email       test@test.com   # writes email address to field having placeholder “Email” visible
+    TypeText        Address     Main street     Delivery Address
+----
+
+### TypeSecret
+
+`TypeSecret   locator     text    anchor`
+
+Types text to given input field but does not log written text to log. TypeSecret is usually used with passwords, tokens and otheer secrets.
+
+[source, robotframework]
+----
+*** Settings ***
+Library                     QWeb
+
+*** Test Cases ***
+TypeSecret examples
+    ...
+    TypeText        Email       test@test.com   # writes email address to field having placeholder “Email” visible
+    TypeSecret      Password     ${PASSWORD}    # writes variable ${PASSWORD} content to password field but does not log what is written
+----
+
+### Dropdown
+
+`DropDown   locator     option  anchor`
+
+Selects a value from a dropdown list.
+
+Arguments:  
+
+* locator = one of the options on the list or xpath  
+* option = value to be selected  
+* anchor = text near the dropdown element (optional)
+
+
+[source, robotframework]
+----
+*** Settings ***
+Library                     QWeb
+
+*** Test Cases ***
+DropDown examples
+    ...
+    DropDown        City        London
+    DropDown        xpath=//*[@id=”dd_list”]     London
+----
+
+### ClickCheckbox
+
+`ClickCheckbox   locator     status   anchor`
+
+Checks or unchecks a checkbox.
+
+Arguments:  
+
+* locator = text / label near checkbox or xpath.
+* status = on -> checked, off -> unchecked
+* anchor = text near the dropdown element (optional)
+
+
+[source, robotframework]
+----
+*** Settings ***
+Library                     QWeb
+
+*** Test Cases ***
+ClickCheckbox examples
+    ...
+    ClickCheckbox    I am not a robot    on
+    ClickCheckbox    I am not a robot    off
+----
+
+
+
+## Exercise
+
+. Go to https://qentinelqi.github.io/shop/
+. Add product "Scar the Lion" to shopping cart
+. Select "Large" as size of a t-shirt
+. Set quantity of products to 2
+. Checkout
+. Fill in "Full Name", "Email" and "Billing Address"
+. Change your mind and edit cart, remove product from cart and verify cart is empty
+
+### Solution
+
+Exercise example solution can be found the repo. Please try to implement your own solution first before looking at the provided solution.
+
+Run this solution from repo root by:
+```
+robot ./02/02_solution.robot 
+```
+'''
+link:../README.md[Tutorial index]  |  link:../03/assertions.adoc[Next]
+
+

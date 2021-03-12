@@ -1,0 +1,70 @@
+// We must enable experimental attribute.
+:experimental:
+:icons: font
+:toc:
+
+// GitHub doesn't render asciidoc exactly as intended, so we adjust settings and utilize some html
+
+ifdef::env-github[]
+
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+= Timeouts
+
+Almost all QWeb keywords have an inbuilt *timeout*, i.e they keep re-trying to find elements and do their action until action succeeds OR until timeout limit is reached. By default this timeout limit is *10 seconds*.
+
+You can change this timeout temporarily by giving an argument *timeout*:
+
+[source, robotframework]
+----
+VerifyText      Username    timeout=3       # only wait 3 seconds for element to appear
+ClickText       Login       timeout=30      # wait max 30 seconds for element to appear
+----
+
+You can also change timeouts for every keyword (globally) with *SetConfig*:
+
+[source, robotframework]
+----
+SetConfig     DefaultTimeout    60   # sets default timeout to 60 seconds, affecting all keywords
+----
+
+After setting defaultTimeout with Setconfig, you can use keywords without any arguments:
+[source, robotframework]
+----
+SetConfig       DefaultTimeout    60
+VerifyText      Username    # would wait 60 seconds for text to appear before failing
+ClickText       Login       # would wait max 60 seconds for element to appear
+----
+
+This is especially useful in case you run your tests against different environments that may have different resources; you can dynamically set the timeout based on environment under test.
+
+{empty} +
+{empty} +
+
+NOTE: Try to avoid *Sleep* keyword as much as possible. The difference between QWeb's timeouts and *Sleep* keyword is that Sleep will *_ALWAYS_* wait until given time before proceeding to next keyword; QWeb timeouts will move to next keyword as soon as element is available. 
+
+## Exercise
+
+To really see how timeouts work, we'll create 3 failing test cases with different timeouts.
+
+. Open Browser and Go to https://qentinelqi.github.io/shop/
+. Verify non-existing text using default timeout, 15 second timeout and 45 second timeout
+. Run the test suite and examine the logs. Was the timeout as expected?
+
+### Solution
+
+Exercise example solution can be found the repo. Please try to implement your own solution first before looking at the provided solution.
+
+Run this solution from repo root by:
+```
+robot ./06/06_solution.robot 
+```
+
+
+'''
+link:../README.md[Tutorial index]  |  link:../07/anchors.adoc[Next]

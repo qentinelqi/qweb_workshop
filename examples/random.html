@@ -1,0 +1,52 @@
+<html>
+
+<head></head>
+
+<body contenteditable="false">
+
+  <h2 id="heading">Random example</h2>
+
+  <p>Every time you click the button, a random number between 0
+    and 9 will be displayed in text area.
+    <br><br>
+    <b>ClickUntil</b> example:
+    <br>
+    If random number is <b>three</b> (or whatever you have in your script), ClickUntil should spot this and stop
+    re-trying.
+    <br><br>
+    <b>ClickWhile</b> example:
+    <br>If random number is less than <b>three</b>, message "...condition not met" should disappear and clicking should
+    stop </p>
+
+  <button onclick="example()">Click Me</button>
+
+
+  <p id="demo"></p>
+
+  <p id="result">ClickWhile condition not met</p>
+
+  <script>
+    function getRndInteger(min, max) {
+      return Math.floor(Math.random() * (max - min)) + min;
+    }
+  </script>
+
+  <script>
+    function example() {
+      var i = getRndInteger(0, 10)
+
+      document.getElementById('demo').innerHTML = i
+      if (i < 3) {
+        document.getElementById('result').innerHTML = ""
+      } else {
+        document.getElementById('result').innerHTML = "ClickWhile condition not met"
+      }
+    }
+  </script>
+
+
+
+
+</body>
+
+</html>

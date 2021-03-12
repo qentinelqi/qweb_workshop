@@ -1,0 +1,125 @@
+// We must enable experimental attribute.
+:experimental:
+:icons: font
+:toc:
+
+// GitHub doesn't render asciidoc exactly as intended, so we adjust settings and utilize some html
+
+ifdef::env-github[]
+
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+# Interacting with Browser
+
+## Keywords
+### OpenBrowser
+Browser needs to be opened with ```OpenBrowser``` keyword for QWeb/Selenium to be able to control it. OpenBrowser takes *url* and *browser name* as arguments. Optionally browser options and preferences can be given as well.
+
+
+
+[source, robotframework]
+----
+*** Settings ***
+Library                     QWeb
+
+*** Test Cases ***
+Open Browser demo
+    OpenBrowser     https://www.google.com              chrome 
+    OpenBrowser     file://resources/window.html        firefox
+    
+    OpenBrowser     https://www.google.com              chrome      chrome_path=/path/to/chromium/chrome.exe
+    Open Browser    about:blank                         chrome      --lang\=it      prefs=download.prompt_for_download: False, plugins.always_open_pdf_externally: True
+----
+
+WARNING: QWeb and SeleniumLibrary have their own browser registries, so you can't use QWeb keywords and SeleniumLibrary keywords to control *same* browser session.
+
+### GoTo
+*GoTo 	url*  
+
+Navigates to given url with already opened browser window
+
+[source, robotframework]
+----
+*** Settings ***
+Library                     QWeb
+
+*** Test Cases ***
+GoTo demo
+    Open Browser            about:blank    chrome
+    GoTo 	                http://google.com 
+    GoTo 	                file://resources/window.html
+----
+
+### Working with tabs/windows
+
+You can open, interact and close browser tabs using *OpenWindow*, *SwitchWindow* and *CloseWindow* respectively. If you have not specifically opened a new tab with OpenWindow, you need to use SwitchWindow to switch focus to correct window.
+
+[source, robotframework]
+----
+*** Settings ***
+Library                     QWeb
+
+*** Test Cases ***
+Tabs demo
+    Open Browser            about:blank         chrome
+    OpenWindow
+    # No need to use SwitchWindow as you specifically opened a new window
+    GoTo                    https://www.google.com
+    # simulate an action/javascript opening a new window
+    ExecuteJavascript       window.open()
+    # focus is still on window 2
+    GoTo                    https://qentinelqi.github.io/shop/
+    # switches focus to latest opened tab
+    SwitchWindow            NEW
+    GoTo                    https://qentinelqi.github.io/shop/ 
+    CloseWindow
+----
+
+### CloseBrowser & CloseAllBrowsers
+
+Browser can be closed with *CloseBrowser* (current active instance) or *CloseAllBrowsers* (all instances opened by QWeb)
+
+### Other examples of interacting with browser
+
+[source, robotframework]
+----
+*** Settings ***
+Library                     QWeb
+
+*** Test Cases ***
+Size
+    Open Browser            about:blank    chrome
+    # Set window size
+    SetConfig               WindowSize     900x600
+    # Maximize window
+    MaximizeWindow
+----
+
+
+
+
+## Exercise - Browser
+
+1. Open Chrome and navigate to https://www.google.com
+2. Open new tab/window. Navigate to https://qentinelqi.github.io/shop/
+3. Change browser window size to 
+4. Set focus to first window (Google) and navigate to https://qentinelqi.github.io/shop/
+5. Close all browser windows
+
+### Solution
+
+Exercise example solution can be found the repo. Please try to implement your own solution first before looking at the provided solution.
+
+Run this solution from repo root by:
+```
+robot ./01/01_solution.robot 
+```
+'''
+link:../README.md[Tutorial index]  |  link:../02/basic_interaction.adoc[Next]
+
+

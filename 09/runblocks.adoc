@@ -1,0 +1,130 @@
+// We must enable experimental attribute.
+:experimental:
+:icons: font
+:toc:
+
+// GitHub doesn't render asciidoc exactly as intended, so we adjust settings and utilize some html
+
+ifdef::env-github[]
+
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+= Run Blocks
+
+== Introduction to "Run Blocks"
+
+*Run Block* is a set of keywords handled as one and repeating until the operation succeeds or given timeout expires.
+
+Run Blocks are mostly intended for *Robotic Process Automation* (RPA) use cases, where a failed keyword could mean thousands of records would not be handled. Consider the following use case for example:
+
+```
+1. Robot logins to a web page and selects a region
+2. Robot reads contents of a table with list of records
+3. Robot "copies" the data to SAP
+4. Robot selects another region and repeats steps 2-3
+
+```
+
+If due to a temporary network problem or such the table does not load at all, then the whole operation would fail and records would not get moved to SAP. This is where *Run Blocks* can help.
+
+
+WARNING: Be careful not to mask real errors in your web application by re-trying until operation succeeds using *Run Blocks*. 
+
+== Using Run Blocks
+
+To use run blocks, you would need to create a custom keyword based on multiple keywords you want to repeat until process succeeds or timeout expires. 
+
+You may optionally give another keyword in `exp_handler` argument to instruct additional cleanup to be run on failures.
+
+Then you would call the block with *RunBlock* keyword and suitable timeout.
+
+In the example below we want to:
+1. Open browser and navigate to our *random* example page
+2. Click the button on a page to provide a random number
+3. Verify that the number is *5*.
+4. Click the button on a page one more time to 
+5. Log the number given after *5*
+6. Close Browser
+
+We would start by creating the steps that should be repeated and put them under *Keywords* section:
+
+[source, robot framework]
+----
+*** Settings ***
+Library                     QWeb
+Suite Teardown              CloseBrowser
+
+*** Test Cases ***
+RunBlock demo
+    # TODO
+
+
+*** Keywords ***
+
+GiveMeFive
+    ClickText               Click Me
+    VerifyText              5           timeout=2       # Let's only wait for 2 seconds
+----
+
+Then we would call this keywords with RunBlock and instruct RunBlock to close & re-open browser on failures:
+
+[source, robot framework]
+----
+*** Settings ***
+Library                     QWeb
+
+*** Test Cases ***
+RunBlock demo
+    OpenBrowser             file://${CURDIR}/../examples/random.html   chrome
+    RunBlock                 GiveMeFive      timeout=180s    exp_handler=RebootBrowser
+
+
+*** Keywords ***
+GiveMeFive
+    ClickText               Click Me
+    VerifyText              5           timeout=2       # Let's only wait for 2 seconds
+
+RebootBrowser
+    CloseBrowser
+    OpenBrowser             file://${CURDIR}/../examples/random.html   chrome
+----
+
+...to finalize the case we would add those remaining steps to our test case:
+
+[source, robot framework]
+----
+*** Settings ***
+Library                     QWeb
+
+*** Test Cases ***
+RunBlock demo
+    RunBlock                GiveMeFive      timeout=180s    exp_handler=RebootBrowser
+    ClickText               Click Me            # click button again
+    ClickText               Click Me            # click button again
+    ${after_five}           GetText         //*[@id\="demo"]
+    Log                     Number after '5' was: ${after_five}
+
+*** Keywords ***
+GiveMeFive
+    ClickText               Click Me
+    VerifyText              5           timeout=2       # Let's only wait for 2 seconds
+
+RebootBrowser
+    CloseBrowser
+    OpenBrowser             file://${CURDIR}/../examples/random.html   chrome
+----
+
+You can run this example test case from repo root with command:
+
+```shell
+robot       09/blocks_demo.robot
+```
+
+
+'''
+link:../README.md[Tutorial index]  |  link:../10/tables.adoc[Next]

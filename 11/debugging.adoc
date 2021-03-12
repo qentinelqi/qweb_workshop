@@ -1,0 +1,93 @@
+// We must enable experimental attribute.
+:experimental:
+:icons: font
+:toc:
+
+// GitHub doesn't render asciidoc exactly as intended, so we adjust settings and utilize some html
+
+ifdef::env-github[]
+
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+# Helpers: Documentation & Debugging
+
+QWeb has two helper features to aid you while creating test automation scripts. It contains a command-line interface to display keyword documentation and is integrated to `robotframework-debugger / rfdebug` for stopping the execution and turning on debugging when needed.
+
+## Command-line interface
+
+QWeb's command-line interface guarantees you always have access to the latest available keyword documentation. On a terminal, type:
+
+.Windows
+```shell
+python -m QWeb --help
+```
+
+.Linux/Mac
+```shell
+python3 -m QWeb --help
+```
+...to display commands:
+
+```
+❯ python -m QWeb --help
+usage: python QWeb [options] INPUT
+
+EXAMPLES:
+QWeb --all (lists all keywords)
+QWeb --list Get (lists all keywords startin with "Get")
+QWeb --show TypeText (displays documentation for keyword "TypeText")
+
+Note: This module is meant to be used as a robot famework library.Command line
+interface only provides access to keyword documentation.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -V, --version         show program's version number and exit
+  -A, --all             lists ALL keywords
+  -L LIST, --list LIST  lists keywords based on input string
+  -S SHOW, --show SHOW  show docs for keyword(s)
+```
+
+## Debugging
+
+You can turn on debugging temporarily using keyword *DebugOn* and turn it off temporarily by using keyword *DebugOff*.
+
+[source, robot framework]
+.Debugging demo
+----
+*** Settings ***
+Library         QWeb
+
+*** Test Cases ***
+Use case 1
+    OpenBrowser     https://qentinelqi.github.io/shop       chrome
+    VerifyText      The animal friendly clothing company
+    ClickText       Scar the Lion
+    ClickText       Add to cart
+    VerifyText      Cart summary
+    DropDown        Size                                    Large
+    ClickItem       Increment quantity
+    DebugOn
+    ClickItem       Remove item
+    VerifyText      Your cart is empty
+    ClickText       Continue shopping
+----
+
+Run this example from repo root by:
+```
+robot ./11/demo_debug_11.robot 
+```
+
+TIP: To exit debug mode, write `exit` to debug terminal.
+
+NOTE: On link:../12/setconfig.adoc#debug[next chapter] you will learn a setting that turns debugging on on every failed keyword.
+
+'''
+link:../README.md[Tutorial index]  |  link:../12/setconfig.adoc[Next]
+
+
