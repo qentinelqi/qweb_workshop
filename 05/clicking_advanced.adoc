@@ -161,7 +161,14 @@ Build on top of the examples above and using the same example pages, create 3 te
   .. Click button "Click Me" until "ClickWhile condition was not met" disappears
   .. Wait maximum of 45 seconds for this to happen and click button in 2 second intervals
  
+### Solution
 
+Exercise example solution can be found the repo. Please try to implement a solution first before looking at the solution.
+
+Run this solution from repo root by:
+```
+robot ./05/05_solution.robot 
+```
 
 '''
 link:../README.md[Tutorial index]  |  link:../06/timeouts.adoc[Next]
