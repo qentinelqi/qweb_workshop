@@ -220,6 +220,11 @@ Table exercises
     ClickCell   r?John/c4      tag=button
 
 ----
+
+Run this solution from repo root by:
+```
+robot ./10/solution_10.robot 
+```
 +++ </div></details> +++
 
 
