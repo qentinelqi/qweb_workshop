@@ -47,7 +47,7 @@ However, if you are expecting an alert as a part of your test case, you have the
 
 Build on top of the right-click example on chapter 5.
 
-. Go to hhttps://swisnl.github.io/jQuery-contextMenu/demo.html
+. Go to https://swisnl.github.io/jQuery-contextMenu/demo.html
 . RightClick button "right click me"
 . Select (click) option "Copy" from the context menu
 . Verify that alert with text "clicked: copy" appears

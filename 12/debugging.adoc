@@ -80,14 +80,14 @@ Use case 1
 
 Run this example from repo root by:
 ```
-robot ./11/demo_debug_11.robot 
+robot ./12/demo_debug_12.robot 
 ```
 
 TIP: To exit debug mode, write `exit` to debug terminal.
 
-NOTE: On link:../12/setconfig.adoc#debug[next chapter] you will learn a setting that turns debugging on on every failed keyword.
+NOTE: On link:../13/setconfig.adoc#debug[next chapter] you will learn a setting that turns debugging on on every failed keyword.
 
 '''
-link:../README.md[Tutorial index]  |  link:../12/setconfig.adoc[Next]
+link:../README.md[Tutorial index]  |  link:../13/setconfig.adoc[Next]
 
 

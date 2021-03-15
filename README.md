@@ -17,9 +17,10 @@ Workshop covers the following topics:
 8. [Handling Alerts](./08/alerts.adoc)
 9. [Run Blocks](./09/runblocks.adoc)
 10. [Table keywords](./10/tables.adoc)
-11. [Helpers: Documentation & Debugging](./11/debugging.adoc)
-12. [Settings / Configuration](./12/setconfig.adoc)
-13. [Extending QWeb](./13/extending_qweb.adoc)
+11. [Appstates & Teardowns](./11/appstate_teardown.adoc)
+12. [Helpers: Documentation & Debugging](./12/debugging.adoc)
+13. [Settings / Configuration](./13/setconfig.adoc)
+14. [Extending QWeb](./14/extending_qweb.adoc)
 
 Each chapter has it's own material, exercises and exercise solutions on repo.
 
